@@ -3,7 +3,7 @@ package business;
 public class Serie {
 	
 	String[] GENEROS;
-	String nome, genero;
+	String nome, genero, idioma;
 	int quantidadeEpisodios, audiencia;
 	public String[] getGENEROS() {
 		return GENEROS;
@@ -45,6 +45,14 @@ public class Serie {
 		setGENEROS(null);
 		setNome(null);
 		setQuantidadeEpisodios(0);
+	}
+	
+	public void setIdioma(String idioma) {
+		this.idioma = idioma;
+	}
+	
+	public void getIdioma(String idioma) {
+		this.idioma = idioma;
 	}
 	
 	public Serie(String[] GENEROS, String nome, String genero, int quantidadeEpisodios, int audiencia){
