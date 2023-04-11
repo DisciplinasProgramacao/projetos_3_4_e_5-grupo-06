@@ -34,6 +34,9 @@ public class Serie {
 	public void setAudiencia(int audiencia) {
 		this.audiencia = audiencia;
 	}
+	public void registrarAudiencia() {
+		audiencia++;
+	}
 	Serie(String[] GENEROS, String nome, String genero, int quantidadeEpisodios, int audiencia){
 		setAudiencia(audiencia);
 		setGenero(genero);
