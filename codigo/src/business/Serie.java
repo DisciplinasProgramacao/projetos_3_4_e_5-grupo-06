@@ -1,6 +1,7 @@
 package business;
 
 public class Serie {
+	
 	String[] GENEROS;
 	String nome, genero;
 	int quantidadeEpisodios, audiencia;
@@ -37,11 +38,21 @@ public class Serie {
 	public void registrarAudiencia() {
 		audiencia++;
 	}
-	Serie(String[] GENEROS, String nome, String genero, int quantidadeEpisodios, int audiencia){
+	
+	public Serie(){
+		setAudiencia(0);
+		setGenero(null);
+		setGENEROS(null);
+		setNome(null);
+		setQuantidadeEpisodios(0);
+	}
+	
+	public Serie(String[] GENEROS, String nome, String genero, int quantidadeEpisodios, int audiencia){
 		setAudiencia(audiencia);
 		setGenero(genero);
 		setGENEROS(GENEROS);
 		setNome(nome);
 		setQuantidadeEpisodios(quantidadeEpisodios);
 	}
+	
 }
