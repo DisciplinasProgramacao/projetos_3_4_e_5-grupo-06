@@ -27,6 +27,39 @@ public class Cliente {
             }
         }
     }
+	
+	    //método para filtrar series por genero
+    public List<Serie> filtrarporGenero(String genero) {
+    	List<Serie> resultado = new ArrayList<>();
+    	for(Serie serie : listaJaVistas) {
+    		if(serie.getGenero().equals(genero)) {
+    			resultado.add(serie);
+    		}
+    	}
+    	return resultado;
+    	}
+    
+    //método para filtrar series por idioma
+    public List<Serie> filtrarPorIdioma(String idioma) {
+    	List<Serie> resultado = new ArrayList<>();
+    	for(Serie serie : listaJaVistas) {
+    		if(serie.getIdioma().equals(idioma)) {
+    			resultado.add(serie);
+    		}
+    	}
+    	return resultado;
+    }
+    
+    //método para filtrar series por quantidade de episódios
+    public List<Serie> filtrarPorQtdEpisodios(int quantEpisodios) {
+    	List<Serie> resultado = new ArrayList<>();
+    	for(Serie serie: listaJaVistas) {
+    		if(serie.getQuantidadeEpisodios()==quantEpisodios) {
+    			resultado.add(serie);
+    		}
+    	}
+    	return resultado;
+    }
     
     // get / set
 
