@@ -38,9 +38,6 @@ public class Serie {
 	public void setAudiencia(int audiencia) {
 		this.audiencia = audiencia;
 	}
-	public void registrarAudiencia() {
-		audiencia++;
-	}
 	public void setIdioma(String idioma) {
 		this.idioma = idioma;
 	}
@@ -48,6 +45,12 @@ public class Serie {
 	public void getIdioma(String idioma) {
 		this.idioma = idioma;
 	}
+	
+	//Registro de audiência
+	public void registrarAudiencia() {
+		audiencia++;
+	}
+	
 	
 	//Construtores
 	
