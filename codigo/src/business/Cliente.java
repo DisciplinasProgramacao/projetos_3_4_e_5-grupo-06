@@ -15,7 +15,18 @@ public class Cliente {
         this.listaParaVer = new ArrayList<>();
         this.listaJaVistas = new ArrayList<>();
     }
+    public void adicionarNaLista(Serie serie) {
+        listaParaVer.add(serie);
+    }
     
+    public void retirarDaLista(String nomeSerie) {
+        for (Serie serie : listaParaVer) {
+            if (serie.getNome().equals(nomeSerie)) {
+                listaParaVer.remove(serie);
+                break;
+            }
+        }
+    }
     
     // get / set
 
