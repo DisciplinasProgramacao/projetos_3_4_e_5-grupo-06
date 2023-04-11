@@ -54,3 +54,9 @@ public class Cliente {
 	  public void setListaJaVistas(List<Serie> listaJaVistas) {
 		  this.listaJaVistas = listaJaVistas;
 	  }
+	 public void registrarAudiencia(Serie serie) {
+		  retirarDaLista(serie.getNome());
+		  getListaJaVistas().add(serie);
+		  serie.registrarAudiencia();
+	  }
+}
