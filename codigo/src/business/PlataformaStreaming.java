@@ -62,4 +62,13 @@ public class PlataformaStreaming {
         return resultado;
     }
 
+    public List<Serie> filtrarPorQtdEpisodios(int quantEpisodios) {
+        List<Serie> resultado = new ArrayList<>();
+        for (Serie serie : series.values()) {
+            if (serie.getQuantidadeEpisodios() == quantEpisodios) {
+                resultado.add(serie);
+            }
+        }
+        return resultado;
+    }
 }

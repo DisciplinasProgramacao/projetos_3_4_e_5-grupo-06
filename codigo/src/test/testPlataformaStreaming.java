@@ -55,4 +55,18 @@ class testPlataformaStreaming {
         Assertions.assertEquals(0, plataforma.filtrarPorIdioma("Portuguese").size());
     }
 
+    @Test
+    public void testFiltrarPorQtdEpisodios() {
+        Serie serie1 = new Serie("Breaking Bad", "Drama", "English", 62, 0);
+        Serie serie2 = new Serie("Friends", "Comedy", "English", 236, 0);
+        Serie serie3 = new Serie("La Casa de Papel", "Drama", "Spanish", 31, 0);
+        plataforma.adicionarSerie(serie1);
+        plataforma.adicionarSerie(serie2);
+        plataforma.adicionarSerie(serie3);
+
+        Assertions.assertEquals(1, plataforma.filtrarPorQtdEpisodios(62).size());
+        Assertions.assertEquals(1, plataforma.filtrarPorQtdEpisodios(236).size());
+        Assertions.assertEquals(1, plataforma.filtrarPorQtdEpisodios(31).size());
+        Assertions.assertEquals(0, plataforma.filtrarPorQtdEpisodios(100).size());
+    }
 }
