@@ -3,17 +3,10 @@ package business;
 public class Serie {
 	
 	//Declaração de variáveis
-	String[] GENEROS;
 	String nome, genero, idioma;
 	int quantidadeEpisodios, audiencia;
 	
 	//Getters e Setters
-	public String[] getGENEROS() {
-		return GENEROS;
-	}
-	public void setGENEROS(String[] gENEROS) {
-		GENEROS = gENEROS;
-	}
 	public String getNome() {
 		return nome;
 	}
@@ -42,8 +35,8 @@ public class Serie {
 		this.idioma = idioma;
 	}
 	
-	public void getIdioma(String idioma) {
-		this.idioma = idioma;
+	public void getIdioma() {
+		return idioma;
 	}
 	
 	//Registro de audiência
@@ -57,14 +50,12 @@ public class Serie {
 	public Serie(){
 		setAudiencia(0);
 		setGenero(null);
-		setGENEROS(null);
 		setNome(null);
 		setQuantidadeEpisodios(0);
 	}
-	public Serie(String[] GENEROS, String nome, String genero, int quantidadeEpisodios, int audiencia){
+	public Serie(String nome, String genero, int quantidadeEpisodios, int audiencia){
 		setAudiencia(audiencia);
 		setGenero(genero);
-		setGENEROS(GENEROS);
 		setNome(nome);
 		setQuantidadeEpisodios(quantidadeEpisodios);
 	}
