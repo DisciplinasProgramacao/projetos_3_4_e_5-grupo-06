@@ -53,11 +53,12 @@ public class Serie {
 		setNome(null);
 		setQuantidadeEpisodios(0);
 	}
-	public Serie(String nome, String genero, int quantidadeEpisodios, int audiencia){
-		setAudiencia(audiencia);
-		setGenero(genero);
+	public Serie(String nome, String genero, String idioma, int quantidadeEpisodios, int audiencia){
 		setNome(nome);
+		setGenero(genero);
+		setIdioma(idioma);
 		setQuantidadeEpisodios(quantidadeEpisodios);
+		setAudiencia(audiencia);
 	}
 	
 }
