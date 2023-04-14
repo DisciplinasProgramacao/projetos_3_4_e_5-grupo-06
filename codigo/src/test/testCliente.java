@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Assertions;
 import business.Cliente;
 import business.Serie;
 
-class testCliente {
+public class testCliente {
 
 	private Cliente cliente;
     	private Serie serie1;
