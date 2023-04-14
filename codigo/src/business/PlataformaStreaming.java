@@ -51,4 +51,15 @@ public class PlataformaStreaming {
         }
         return resultado;
     }
+
+    public List<Serie> filtrarPorIdioma(String idioma) {
+        List<Serie> resultado = new ArrayList<>();
+        for (Serie serie : series.values()) {
+            if (serie.getIdioma().equals(idioma)) {
+                resultado.add(serie);
+            }
+        }
+        return resultado;
+    }
+
 }
