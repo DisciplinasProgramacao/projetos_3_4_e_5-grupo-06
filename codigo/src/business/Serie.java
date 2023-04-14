@@ -35,7 +35,7 @@ public class Serie {
 		this.idioma = idioma;
 	}
 	
-	public void getIdioma() {
+	public String getIdioma() {
 		return idioma;
 	}
 	
