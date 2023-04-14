@@ -1,5 +1,7 @@
 package test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -68,5 +70,16 @@ class testPlataformaStreaming {
         Assertions.assertEquals(1, plataforma.filtrarPorQtdEpisodios(236).size());
         Assertions.assertEquals(1, plataforma.filtrarPorQtdEpisodios(31).size());
         Assertions.assertEquals(0, plataforma.filtrarPorQtdEpisodios(100).size());
+    }
+
+    @Test
+    public void RegistrarAudienciatest() {
+        Serie serie1 = new Serie("Série 1", "Drama", "Inglês", 10, 0);
+        Serie serie2 = new Serie("Série 2", "Comédia", "Português", 5, 0);
+        plataforma.registrarAudiencia(serie1);
+        plataforma.registrarAudiencia(serie2);
+        plataforma.registrarAudiencia(serie2);
+        assertEquals(1, serie1.getAudiencia());
+        assertEquals(2, serie2.getAudiencia());
     }
 }

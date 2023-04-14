@@ -71,4 +71,8 @@ public class PlataformaStreaming {
         }
         return resultado;
     }
+
+    public void registrarAudiencia(Serie serie) {
+        serie.registrarAudiencia();
+    }
 }
