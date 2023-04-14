@@ -26,4 +26,19 @@ class testPlataformaStreaming {
         Assertions.assertEquals(cliente, plataforma.login("user123", "password"));
         Assertions.assertEquals(cliente, plataforma.getClienteAtual());
     }
+
+    @Test
+    public void testFiltrarPorGenero() {
+        Serie serie1 = new Serie("Breaking Bad", "Drama", "English", 62, 0);
+        Serie serie2 = new Serie("Friends", "Comedy", "English", 236, 0);
+        Serie serie3 = new Serie("La Casa de Papel", "Drama", "Spanish", 31, 0);
+        plataforma.adicionarSerie(serie1);
+        plataforma.adicionarSerie(serie2);
+        plataforma.adicionarSerie(serie3);
+
+        Assertions.assertEquals(2, plataforma.filtrarPorGenero("Drama").size());
+        Assertions.assertEquals(1, plataforma.filtrarPorGenero("Comedy").size());
+        Assertions.assertEquals(0, plataforma.filtrarPorGenero("Action").size());
+    }
+
 }

@@ -42,4 +42,13 @@ public class PlataformaStreaming {
         return this.clienteAtual = clienteAtual;
     }
 
+    public List<Serie> filtrarPorGenero(String genero) {
+        List<Serie> resultado = new ArrayList<>();
+        for (Serie serie : series.values()) {
+            if (serie.getGenero().equals(genero)) {
+                resultado.add(serie);
+            }
+        }
+        return resultado;
+    }
 }
