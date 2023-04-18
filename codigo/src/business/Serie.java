@@ -60,12 +60,6 @@ public class Serie {
 	
 	//Construtores
 	
-	public Serie(){
-		setAudiencia(0);
-		setGenero(null);
-		setNome(null);
-		setQuantidadeEpisodios(0);
-	}
 	public Serie(String nome, String genero, String idioma, int quantidadeEpisodios, int audiencia){
 		setNome(nome);
 		setGenero(genero);

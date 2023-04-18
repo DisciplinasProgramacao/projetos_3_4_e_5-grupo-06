@@ -9,17 +9,17 @@ import business.Serie;
 
 class testSerie {
 	
-	Serie s;
+	Serie serie1;
 	
 	@BeforeEach
 	public void setUp() {
-		s = new Serie();
+		serie1 = new Serie("Game of Thrones", "Fantasia", "Inglês", 62, 0);
 	}
 	
 	@Test
 	public void testRegistrarAudiencia(){
-		s.registrarAudiencia();
-		assertEquals(s.getAudiencia(), 1);
+		serie1.registrarAudiencia();
+		assertEquals(1, serie1.getAudiencia());
 	}
 
 }
