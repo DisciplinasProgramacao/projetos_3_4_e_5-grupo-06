@@ -85,4 +85,46 @@ public class PlataformaStreaming {
     public void registrarAudiencia(Serie serie) {
         serie.registrarAudiencia();
     }
+    
+    public void salvarEspectadores(String nomeArquivo, HashMap<String, Cliente> clientes, PlataformaStreaming a) {
+    	
+		try (BufferedWriter writer = new BufferedWriter(new FileWriter(nomeArquivo))) {
+			 for (Cliente c : clientes.values()) {
+ 	    writer.write(a.login(c.getNomeDeUsuario(), c.getSenha()) + ";" + c.getNomeDeUsuario() + ";" + c.getSenha() + "\n");
+			 }
+        System.out.println("Os espectadores foram salvados no arquivo CSV com sucesso!");
+    } catch (IOException e) {
+        System.out.println("Ocorreu um erro ao salvar os espectadores no arquivo CSV.");
+        e.printStackTrace();
+    }
+	}
+    
+    public void salvarSeries(String nomeArquivo, HashMap<String, Serie> series) {
+    	
+  		try (BufferedWriter writer = new BufferedWriter(new FileWriter(nomeArquivo))) {
+  			 for (Serie s : series.values()) {
+   	    writer.write(s.getId() + ";" + s.getNome() + ";" + s.getData() + "\n");
+  			 }
+          System.out.println("As series foram salvas no arquivo CSV com sucesso!");
+      } catch (IOException e) {
+          System.out.println("Ocorreu um erro ao salvar as series no arquivo CSV.");
+          e.printStackTrace();
+      }
+  	}
+    
+ public void salvarAudiencia(String nomeArquivo, PlataformaStreaming a, HashMap<String, Cliente> clientes, HashMap<String, Serie> series) {
+    	
+  		try (BufferedWriter writer = new BufferedWriter(new FileWriter(nomeArquivo))) {
+  			 for (Cliente c : clientes.values()) {
+  				 for(Serie s : series.values()) {
+   	    writer.write(a.login(c.getNomeDeUsuario(), c.getSenha()) + ";"  +c.getListaParaVer()+ "/" + c.getListaJaVistas() + ";" + s.getId() + "\n");
+  			 }
+  			 }
+          System.out.println("A audiencia foi salva no arquivo CSV com sucesso!");
+          
+      } catch (IOException e) {
+          System.out.println("Ocorreu um erro ao salvar a audiencia no arquivo CSV.");
+          e.printStackTrace();
+      }
+  	}
 }
