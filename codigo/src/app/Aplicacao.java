@@ -1,6 +1,6 @@
 package app;
 
-import business.*;;
+import business.*;
 
 public class Aplicacao {
 
