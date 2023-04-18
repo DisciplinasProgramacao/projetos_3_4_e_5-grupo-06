@@ -7,6 +7,18 @@ public class Serie {
 	int quantidadeEpisodios, audiencia;
 	
 	//Getters e Setters
+	public double getId() {
+		return id;
+	}
+	public void setId(double id) {
+		this.id = id;
+	}
+	public String getData() {
+		return data;
+	}
+	public void setData(String data) {
+		this.data = data;
+	}
 	public String getNome() {
 		return nome;
 	}
