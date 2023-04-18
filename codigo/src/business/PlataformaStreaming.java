@@ -103,7 +103,7 @@ public class PlataformaStreaming {
 			 for (Cliente c : clientes.values()) {
  	    writer.write(a.login(c.getNomeDeUsuario(), c.getSenha()) + ";" + c.getNomeDeUsuario() + ";" + c.getSenha() + "\n");
 			 }
-        System.out.println("Os espectadores foram salvados no arquivo CSV com sucesso!");
+        System.out.println("Os espectadores foram salvos no arquivo CSV com sucesso!");
     } catch (IOException e) {
         System.out.println("Ocorreu um erro ao salvar os espectadores no arquivo CSV.");
         e.printStackTrace();
