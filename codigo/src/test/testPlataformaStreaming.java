@@ -86,4 +86,64 @@ class testPlataformaStreaming {
         assertEquals(1, serie1.getAudiencia());
         assertEquals(2, serie2.getAudiencia());
     }
+	
+    @Test
+	public void testSalvarEspectador() {
+		Cliente cliente = new Cliente("user123", "password");
+		Cliente c2 = new Cliente("user999", "senha");
+        plataforma.adicionarCliente(cliente);
+        plataforma.adicionarCliente(c2);
+        
+        plataforma.salvarEspectadores("espectador.csv", plataforma.getTodosClientes(), plataforma);
+        assertEquals(cliente, plataforma.login(cliente.getNomeDeUsuario(), cliente.getSenha()));
+        assertEquals(c2, plataforma.login(c2.getNomeDeUsuario(), c2.getSenha()));
+        
+        
+	}
+    
+    @Test
+   	public void testSalvarSeries() {
+    	Serie serie1 = new Serie("Série 1", "Drama", "Inglês", 10, 0);
+    	Serie serie2 = new Serie("Série 2", "Comedia", "Portugues", 10, 0);
+        serie1.setData("17/04/2023");
+        serie1.setId(1);
+        serie2.setData("17/04/2023");
+        serie2.setId(2);
+        plataforma.adicionarSerie(serie1);
+        plataforma.adicionarSerie(serie2);
+        plataforma.salvarSeries("series.csv", plataforma.getTodasSeries());
+           
+        
+        assertEquals(1, serie1.getId());
+        assertEquals(2, serie2.getId());
+           
+           
+   	}
+    
+    @Test
+   	public void testSalvarAudiencia() {
+    	Cliente c = new Cliente("Victor", "123");
+    	Cliente c2 = new Cliente("Vitor", "1234");
+    	Serie serie1 = new Serie("Série 1", "Drama", "Inglês", 10, 0);
+    	Serie serie2 = new Serie("Série 2", "Comedia", "Portugues", 10, 0);
+        serie1.setData("17/04/2023");
+        serie1.setId(1);
+        serie2.setData("17/04/2023");
+        serie2.setId(2);
+        plataforma.adicionarSerie(serie1);
+        plataforma.adicionarSerie(serie2);
+        
+        c.registrarAudiencia(serie1);
+        c2.registrarAudiencia(serie1);
+        plataforma.registrarAudiencia(serie1);
+        plataforma.registrarAudiencia(serie1);
+        plataforma.salvarAudiencia("audiencia.csv", plataforma, plataforma.getTodosClientes(), plataforma.getTodasSeries());
+ 
+           
+           
+   	}
+    
+    
+
 }
+
