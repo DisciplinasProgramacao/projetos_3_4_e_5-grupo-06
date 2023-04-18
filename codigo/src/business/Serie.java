@@ -3,8 +3,9 @@ package business;
 public class Serie {
 	
 	//Declaração de variáveis
-	String nome, genero, idioma;
+	String nome, genero, idioma, data;
 	int quantidadeEpisodios, audiencia;
+	double id;
 	
 	//Getters e Setters
 	public double getId() {
