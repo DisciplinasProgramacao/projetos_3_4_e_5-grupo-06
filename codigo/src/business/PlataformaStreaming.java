@@ -27,6 +27,14 @@ public class PlataformaStreaming {
         }
         return null;
     }
+	
+    public  HashMap<String, Cliente> getTodosClientes() {
+    	return this.clientes;
+    }
+    
+    public  HashMap<String, Serie> getTodasSeries() {
+    	return this.series;
+    }
 
     //método para adicionarserie
     public void adicionarSerie(Serie serie) {
