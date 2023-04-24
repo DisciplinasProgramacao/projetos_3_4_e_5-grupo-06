@@ -21,6 +21,7 @@ public class testFilme {
         assertEquals(2, filme.getId());
     }
 
+    //teste get e set de nome
     @Test
     public void testGetNome() {
         Filme filme = new Filme(1, "Filme 1", "01/01/2023", 120);
@@ -34,12 +35,14 @@ public class testFilme {
         assertEquals("Filme 2", filme.getNome());
     }
 
+    //teste get e set de dataLancamento
     @Test
     public void testGetDataLancamento() {
         Filme filme = new Filme(1, "Filme 1", "01/01/2023", 120);
         assertEquals("01/01/2023", filme.getDataLancamento());
     }
     
+
     @Test
     public void testSetDataLancamento() {
         Filme filme = new Filme(1, "Filme 1", "01/01/2023", 120);
@@ -47,6 +50,7 @@ public class testFilme {
         assertEquals("02/02/2023", filme.getDataLancamento());
     }
 
+    //teste get e set  Duração
     @Test
     public void testGetDuracao() {
         Filme filme = new Filme(1, "Filme 1", "01/01/2023", 120);
