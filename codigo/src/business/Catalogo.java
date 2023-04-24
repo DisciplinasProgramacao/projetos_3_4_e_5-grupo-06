@@ -1,10 +1,11 @@
 package business;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
+import java.util.Scanner;
 
 public class Catalogo {
         private List<Filme> filmes;
@@ -15,23 +16,24 @@ public class Catalogo {
         
         public void carregarFilmes() {
             String caminhoArquivo = "C:\\Users\\dtiDIgital\\Downloads\\projetos_3_4_e_5-grupo-06-master (2)\\projetos_3_4_e_5-grupo-06\\codigo\\POO_Filmes.csv";
-            StringBuilder conteudoArquivo = new StringBuilder();
             try {
-                BufferedReader br = new BufferedReader(new FileReader(caminhoArquivo));
-                String linha;
-                while ((linha = br.readLine()) != null) {
-                    String[] dados = linha.split(";");
-                    int id = Integer.parseInt(dados[0]);
-                    String nome = dados[1];
-                    String dataLancamento = dados[2];
-                    int duracao = Integer.parseInt(dados[3]);
-                    Filme filme = new Filme(id, nome, dataLancamento, duracao);
-                    filmes.add(filme);
-                    conteudoArquivo.append(linha).append("\n");
+                Scanner sc = new Scanner(new File(caminhoArquivo));
+                sc.useDelimiter(";");
+                while (sc.hasNext()) {
+                    try {
+                        int idFilme = sc.nextInt();
+                        String nome = sc.next();
+                        String dataLancamento = sc.next();
+                        int duracao = sc.nextInt();
+                        Filme filme = new Filme(idFilme, nome, dataLancamento, duracao);
+                        filmes.add(filme);
+                    } catch (InputMismatchException e) {
+                        System.out.println("Erro ao ler o arquivo: " + e.getMessage());
+                        System.out.println("Token inválido: " + sc.next());
+                    }
                 }
-                br.close();
-                System.out.println("Arquivo carregado com sucesso:");
-                System.out.println(conteudoArquivo.toString());
+                sc.close();
+                System.out.println("Arquivo carregado com sucesso.");
             } catch (IOException e) {
                 e.printStackTrace();
             }
