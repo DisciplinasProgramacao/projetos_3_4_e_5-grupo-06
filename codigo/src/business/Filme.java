@@ -30,4 +30,12 @@ public class Filme {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+    public String getDataLancamento() {
+        return dataLancamento;
+    }
+    
+    public void setDataLancamento(String dataLancamento) {
+        this.dataLancamento = dataLancamento;
+    }
 }

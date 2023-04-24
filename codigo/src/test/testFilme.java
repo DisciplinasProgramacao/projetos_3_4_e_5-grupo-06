@@ -33,4 +33,17 @@ public class testFilme {
         filme.setNome("Filme 2");
         assertEquals("Filme 2", filme.getNome());
     }
+
+    @Test
+    public void testGetDataLancamento() {
+        Filme filme = new Filme(1, "Filme 1", "01/01/2023", 120);
+        assertEquals("01/01/2023", filme.getDataLancamento());
+    }
+    
+    @Test
+    public void testSetDataLancamento() {
+        Filme filme = new Filme(1, "Filme 1", "01/01/2023", 120);
+        filme.setDataLancamento("02/02/2023");
+        assertEquals("02/02/2023", filme.getDataLancamento());
+    }
 }
