@@ -26,7 +26,7 @@ public class Filme {
     public String getNome() {
         return nome;
     }
-    
+
     public void setNome(String nome) {
         this.nome = nome;
     }
@@ -37,5 +37,13 @@ public class Filme {
     
     public void setDataLancamento(String dataLancamento) {
         this.dataLancamento = dataLancamento;
+    }
+
+    public int getDuracao() {
+        return duracao;
+    }
+    
+    public void setDuracao(int duracao) {
+        this.duracao = duracao;
     }
 }

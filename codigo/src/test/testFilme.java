@@ -46,4 +46,18 @@ public class testFilme {
         filme.setDataLancamento("02/02/2023");
         assertEquals("02/02/2023", filme.getDataLancamento());
     }
+
+    @Test
+    public void testGetDuracao() {
+        Filme filme = new Filme(1, "Filme 1", "01/01/2023", 120);
+        assertEquals(120, filme.getDuracao());
+    }
+    
+    @Test
+    public void testSetDuracao() {
+        Filme filme = new Filme(1, "Filme 1", "01/01/2023", 120);
+        filme.setDuracao(90);
+        assertEquals(90, filme.getDuracao());
+    }
 }
+
