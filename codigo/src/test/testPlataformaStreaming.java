@@ -143,6 +143,24 @@ class testPlataformaStreaming {
            
    	}
     
+    @Test
+    public void testCarregarEspectadores() {
+        plataforma.carregarEspectadores();
+        
+    }
+    
+    @Test
+   	public void testCarregarSeries() {
+    	plataforma.carregarSeries();
+    	
+    }
+    
+    @Test
+   	public void testCarregarAudiencia() {
+    	plataforma.carregarAudiencia();
+    	
+    }
+    
     
 
 }
