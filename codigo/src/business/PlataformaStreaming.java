@@ -1,11 +1,13 @@
 package business;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Scanner;
 
 public class PlataformaStreaming {
     private String nome;
@@ -138,4 +140,49 @@ public class PlataformaStreaming {
           e.printStackTrace();
       }
   	}
+ 
+ public void carregarEspectadores() {
+		try{
+			Scanner sc = new Scanner(new File("C:\\Users\\1385832\\git\\projetos_3_4_e_5-grupo-06\\codigo\\POO_Espectadores.csv"));
+			sc.useDelimiter(";|\n");
+			while (sc.hasNext()) {
+				System.out.print(" | "+sc.next()); 
+			}
+			System.out.println();
+			sc.close(); 
+		} catch(IOException e) {
+			System.out.println("Ocorreu um erro ao ler o arquivo de espectadores no arquivo CSV.");
+	          e.printStackTrace();
+		}
+	}
+	
+	public void carregarSeries() {
+		try{
+			Scanner sc = new Scanner(new File("C:\\Users\\1385832\\git\\projetos_3_4_e_5-grupo-06\\codigo\\POO_Series.csv"));
+			sc.useDelimiter(";|\n");
+			while (sc.hasNext()) {
+				System.out.print(" | " + sc.next()); 
+			}
+			System.out.println();
+			sc.close(); 
+		} catch(IOException e) {
+			System.out.println("Ocorreu um erro ao ler o arquivo de series no arquivo CSV.");
+	          e.printStackTrace();
+		}
+	}
+	
+	public void carregarAudiencia() {
+		try{
+			Scanner sc = new Scanner(new File("C:\\Users\\1385832\\git\\projetos_3_4_e_5-grupo-06\\codigo\\POO_Audiencia.csv"));
+			sc.useDelimiter(";|\n");
+			while (sc.hasNextLine()) {
+				System.out.print(" | " + sc.next());
+			}
+			System.out.println();
+			sc.close(); 
+		} catch(IOException e) {
+			System.out.println("Ocorreu um erro ao ler o arquivo de audiencia no arquivo CSV.");
+	          e.printStackTrace();
+		}
+	}
 }
