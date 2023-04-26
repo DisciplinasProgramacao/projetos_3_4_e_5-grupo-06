@@ -1,7 +1,9 @@
 package business;
 
 public class Filme {
-    private int idFilme;
+
+
+    public int idFilme;
     private String nome;
     private String dataLancamento;
     private int duracao;
@@ -20,7 +22,7 @@ public class Filme {
     }
     
     public void setId(int id) {
-        this.idFilme = id;
+        this.idFilme = idFilme;
     }
 
     public String getNome() {
