@@ -132,6 +132,8 @@ class testPlataformaStreaming {
         serie2.setId(2);
         plataforma.adicionarSerie(serie1);
         plataforma.adicionarSerie(serie2);
+        plataforma.adicionarCliente(c);
+        plataforma.adicionarCliente(c2);
         
         c.registrarAudiencia(serie1);
         c2.registrarAudiencia(serie1);

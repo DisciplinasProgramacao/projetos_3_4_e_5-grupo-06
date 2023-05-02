@@ -133,7 +133,7 @@ public class PlataformaStreaming {
   		try (BufferedWriter writer = new BufferedWriter(new FileWriter(nomeArquivo, true))) {
   			 for (Cliente c : clientes.values()) {
   				 for(Serie s : series.values()) {
-   	    writer.write(a.login(c.getNomeDeUsuario(), c.getSenha()) + ";"  +c.getListaParaVer()+ "/" + c.getListaJaVistas() + ";" + s.getId() + "\n");
+   	    writer.write(a.login(c.getNomeDeUsuario(), c.getSenha()) + ";" + c.getNomeDeUsuario() + ";"  +c.getListaParaVer()+ "/" + c.getListaJaVistas() + ";" + s.getId() + "\n");
   			 }
   			 }
           System.out.println("A audiencia foi salva no arquivo CSV com sucesso!");
