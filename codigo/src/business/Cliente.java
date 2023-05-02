@@ -87,6 +87,8 @@ public class Cliente {
 	  public void setListaJaVistas(List<Serie> listaJaVistas) {
 		  this.listaJaVistas = listaJaVistas;
 	  }
+	
+	//Registra a audiencia de uma série específica
 	 public void registrarAudiencia(Serie serie) {
 		  retirarDaLista(serie.getNome());
 		  getListaJaVistas().add(serie);
