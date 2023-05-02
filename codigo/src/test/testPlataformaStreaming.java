@@ -86,11 +86,11 @@ class testPlataformaStreaming {
         assertEquals(1, serie1.getAudiencia());
         assertEquals(2, serie2.getAudiencia());
     }
-	
+	//teste para salvar audiência em um arquivo csv
     @Test
 	public void testSalvarEspectador() {
-		Cliente cliente = new Cliente("user123", "password");
-		Cliente c2 = new Cliente("user999", "senha");
+	Cliente cliente = new Cliente("user123", "password");
+	Cliente c2 = new Cliente("user999", "senha");
         plataforma.adicionarCliente(cliente);
         plataforma.adicionarCliente(c2);
         
@@ -100,7 +100,7 @@ class testPlataformaStreaming {
         
         
 	}
-    
+    //Teste de salvamento de séries em um arquivo csv
     @Test
    	public void testSalvarSeries() {
     	Serie serie1 = new Serie("Série 1", "Drama", "Inglês", 10, 0);
@@ -119,7 +119,7 @@ class testPlataformaStreaming {
            
            
    	}
-    
+    //Teste para salvar a audiência de série em um arquivo csv
     @Test
    	public void testSalvarAudiencia() {
     	Cliente c = new Cliente("Victor", "123");
@@ -143,6 +143,8 @@ class testPlataformaStreaming {
            
    	}
     
+	//Sequência de testes de carregamento de arquivo
+	
     @Test
     public void testCarregarEspectadores() {
     	//Passar a URI do arquivo
