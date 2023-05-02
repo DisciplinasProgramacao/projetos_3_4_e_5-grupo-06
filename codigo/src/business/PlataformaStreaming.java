@@ -101,7 +101,7 @@ public class PlataformaStreaming {
     
     public void salvarEspectadores(String nomeArquivo, HashMap<String, Cliente> clientes, PlataformaStreaming a) {
     	
-		try (BufferedWriter writer = new BufferedWriter(new FileWriter(nomeArquivo))) {
+		try (BufferedWriter writer = new BufferedWriter(new FileWriter(nomeArquivo, true))) {
 			 for (Cliente c : clientes.values()) {
  	    writer.write(a.login(c.getNomeDeUsuario(), c.getSenha()) + ";" + c.getNomeDeUsuario() + ";" + c.getSenha() + "\n");
 			 }
@@ -114,7 +114,7 @@ public class PlataformaStreaming {
     
     public void salvarSeries(String nomeArquivo, HashMap<String, Serie> series) {
     	
-  		try (BufferedWriter writer = new BufferedWriter(new FileWriter(nomeArquivo))) {
+  		try (BufferedWriter writer = new BufferedWriter(new FileWriter(nomeArquivo, true))) {
   			 for (Serie s : series.values()) {
    	    writer.write(s.getId() + ";" + s.getNome() + ";" + s.getData() + "\n");
   			 }
@@ -127,7 +127,7 @@ public class PlataformaStreaming {
     
  public void salvarAudiencia(String nomeArquivo, PlataformaStreaming a, HashMap<String, Cliente> clientes, HashMap<String, Serie> series) {
     	
-  		try (BufferedWriter writer = new BufferedWriter(new FileWriter(nomeArquivo))) {
+  		try (BufferedWriter writer = new BufferedWriter(new FileWriter(nomeArquivo, true))) {
   			 for (Cliente c : clientes.values()) {
   				 for(Serie s : series.values()) {
    	    writer.write(a.login(c.getNomeDeUsuario(), c.getSenha()) + ";"  +c.getListaParaVer()+ "/" + c.getListaJaVistas() + ";" + s.getId() + "\n");
