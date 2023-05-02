@@ -33,7 +33,7 @@ public class Serie {
 		this.dataLancamento = dataLancamento;
 	}
 
-	public double getId() {
+	public int getId() {
 		return id;
 	}
 	public void setId(int id) {

@@ -14,6 +14,7 @@ public class Catalogo {
 
     public Catalogo() {
         this.filmes = new ArrayList<>();
+        this.series = new ArrayList<>();
     }
     
     //Carregamento de filmes a partir de um arquivo
@@ -46,14 +47,16 @@ public class Catalogo {
         Scanner sc;
         try {
             sc = new Scanner(new File(caminhoArquivo));
+            sc.nextLine();
             while(sc.hasNext()) {
                 String a = sc.nextLine();
                 String elementos[] = a.split(";");
-                int idSerie = Integer.parseInt(elementos[0]);
+                int id = Integer.parseInt(elementos[0]);
                 String nome = elementos[1];
                 String dataLancamento = elementos[2];
-                Serie serie = new Serie(idSerie, nome, dataLancamento);
-                this.series.add(serie); // adicionar serie a lista
+                Serie serie = new Serie(id, nome, dataLancamento);
+                System.out.println(serie.getId() + ", " + serie.getNome() + ", " + serie.getDataLancamento());
+                this.series.add(serie); // adiciona serie a lista
             }      
             sc.close();
             System.out.println("Arquivo carregado com sucesso.");
