@@ -7,6 +7,16 @@ public class Serie {
 	int quantidadeEpisodios, audiencia;
 	double id;
 	
+	//Construtor
+	
+	public Serie(String nome, String genero, String idioma, int quantidadeEpisodios, int audiencia){
+		setNome(nome);
+		setGenero(genero);
+		setIdioma(idioma);
+		setQuantidadeEpisodios(quantidadeEpisodios);
+		setAudiencia(audiencia);
+	}
+	
 	//Getters e Setters
 	public double getId() {
 		return id;
@@ -55,17 +65,5 @@ public class Serie {
 	//Registro de audiência
 	public void registrarAudiencia() {
 		audiencia++;
-	}
-	
-	
-	//Construtores
-	
-	public Serie(String nome, String genero, String idioma, int quantidadeEpisodios, int audiencia){
-		setNome(nome);
-		setGenero(genero);
-		setIdioma(idioma);
-		setQuantidadeEpisodios(quantidadeEpisodios);
-		setAudiencia(audiencia);
-	}
-	
+	}	
 }
