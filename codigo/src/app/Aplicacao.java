@@ -14,4 +14,18 @@ public class Aplicacao {
         }
     }
 
+    //Carregar lista de séries
+    //PlataformaStreaming.carregarSeries("caminhoarquivo");
+    //System.out.println("Lista de séries:");
+        //for (Serie serie : catalogo.getSeries()) {
+           // System.out.println(serie.getId() + ", " + serie.getNome() + ", " + serie.getDataLancamento() + ", " + serie.getQuantidadeEpisodios());
+        //}
+
+        //Carregando lista de audiência
+        //catalogo.carregarAudiencia("caminhoarquivo");
+        //System.out.println("Lista de audiência:");
+        //for (Audiencia audiencia : catalogo.getAudiencia()) {
+            //System.out.println(audiencia.getId() + ", " + audiencia.getData() + ", " + audiencia.getQuantidadeEspectadores());
+        // }
 }
+
