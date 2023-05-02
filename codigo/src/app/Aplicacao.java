@@ -3,7 +3,6 @@ package app;
 
 import java.io.IOException;
 import java.util.Scanner;
-import java.time.format.DateTimeFormatter;
 
 import business.*;
 
@@ -12,9 +11,7 @@ public class Aplicacao {
     public static void main(String[] args)throws IOException {
        
     
-    	PlataformaStreaming plataforma = new PlataformaStreaming("testar"); 
-        
-    	DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    	PlataformaStreaming plataforma = new PlataformaStreaming("testar");         
 		
         Scanner scanner = new Scanner(System.in);
         
@@ -25,6 +22,8 @@ public class Aplicacao {
             System.out.println("2. Adicionar filme"); 
             System.out.println("3. Adicionar cliente");
             System.out.println("4. Fazer login");
+            System.out.println("5. Carregar lista de filmes");
+            System.out.println("6. Carregar lista de séries");
             System.out.println("0. Sair");
 
             System.out.print("Escolha uma opção: ");
@@ -125,10 +124,11 @@ public class Aplicacao {
             	break;
             	
             case 6:
-            	// Carregar lista de séries            	
-            	catalogo.carregarSeries();
+            	// Carregar lista de séries 
+            	Catalogo catalogoSerie = new Catalogo();
+            	catalogoSerie.carregarSeries();
             	System.out.println("Lista de séries:");
-            	for (Serie serie1 : catalogo.getSerie()) {
+            	for (Serie serie1 : catalogoSerie.getSerie()) {
         		System.out.println(serie1.getId() + ", " + serie1.getNome() + ", " + serie1.getDataLancamento());
             	}
             	break;
