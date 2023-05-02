@@ -16,6 +16,7 @@ public class PlataformaStreaming {
     private String nome;
     private HashMap<String, Serie> series; 
     private HashMap<String, Cliente> clientes;
+    private HashMap<String, Filme> filmes;
     private Cliente clienteAtual;
 
     //construtor
@@ -23,6 +24,7 @@ public class PlataformaStreaming {
         this.nome = nome;
         this.series = new HashMap<String, Serie>();
         this.clientes = new HashMap<String, Cliente>();
+        this.filmes = new HashMap<String, Filme>();
         this.clienteAtual = null;
     }
 
@@ -43,7 +45,11 @@ public class PlataformaStreaming {
     public  HashMap<String, Serie> getTodasSeries() {
     	return this.series;
     }
+    public  HashMap<String, Filme> getTodosFilmes() {
+    	return this.filmes;
+    }
 
+    
     //método para adicionarserie
     public void adicionarSerie(Serie serie) {
         series.put(serie.getNome(), serie);
@@ -53,14 +59,18 @@ public class PlataformaStreaming {
     public void adicionarCliente(Cliente cliente) {
         clientes.put(cliente.getNomeDeUsuario(), cliente);
     }
-
+    
+    //método para adicionarflimes
+    public void adicionarFilmes(Filme filme) {
+        filmes.put(filme.getNome(), filme);
+    }
     //metodo que retorna objeto cliente
     public Cliente getClienteAtual() {
         return clienteAtual;
     }
 
     //atualiza valor do ClienteAtual
-    public Cliente setClienteAtual(){
+    public Cliente setClienteAtual(Cliente clienteAtual){
         return this.clienteAtual = clienteAtual;
     }
 
@@ -102,7 +112,6 @@ public class PlataformaStreaming {
         serie.registrarAudiencia();
     }
     
-    // Escreve em um arquivo csv os espectadores, informando o nome do cliente e sua senha.
     public void salvarEspectadores(String nomeArquivo, HashMap<String, Cliente> clientes, PlataformaStreaming a) {
     	
 		try (BufferedWriter writer = new BufferedWriter(new FileWriter(nomeArquivo, true))) {
@@ -116,7 +125,6 @@ public class PlataformaStreaming {
     }
 	}
     
-    // Escreve em um arquivo csv as series, informando o id da serie, seu nome e sua data de lancamento.
     public void salvarSeries(String nomeArquivo, HashMap<String, Serie> series) {
     	
   		try (BufferedWriter writer = new BufferedWriter(new FileWriter(nomeArquivo, true))) {
@@ -130,13 +138,12 @@ public class PlataformaStreaming {
       }
   	}
     
-  // Escreve em um arquivo csv a audiencia, informando o nome do cliente, sua lista de filmes/series que ele pretende ver e a lista dos ja vistos.
  public void salvarAudiencia(String nomeArquivo, PlataformaStreaming a, HashMap<String, Cliente> clientes, HashMap<String, Serie> series) {
     	
   		try (BufferedWriter writer = new BufferedWriter(new FileWriter(nomeArquivo, true))) {
   			 for (Cliente c : clientes.values()) {
   				 for(Serie s : series.values()) {
-   	    writer.write(a.login(c.getNomeDeUsuario(), c.getSenha()) + ";" + c.getNomeDeUsuario() + ";"  +c.getListaParaVer()+ "/" + c.getListaJaVistas() + ";" + s.getId() + "\n");
+   	    writer.write(a.login(c.getNomeDeUsuario(), c.getSenha()) + ";"  +c.getListaParaVer()+ "/" + c.getListaJaVistas() + ";" + s.getId() + "\n");
   			 }
   			 }
           System.out.println("A audiencia foi salva no arquivo CSV com sucesso!");
@@ -147,7 +154,6 @@ public class PlataformaStreaming {
       }
   	}
  
-//Metodo que le um arquivo e carrega os dados do arquivo em suas respectivas variaveis
  public void carregarEspectadores(String uri) {
 		try{
 			Scanner sc = new Scanner(new File(uri));
@@ -163,7 +169,6 @@ public class PlataformaStreaming {
 		}
 	}
 
- 	// Metodo que le um arquivo e carrega os dados do arquivo em suas respectivas variaveis
 	public void carregarAudiencia(String uri) {
 	    try {
 	    	Scanner sc = new Scanner(new File(uri));
