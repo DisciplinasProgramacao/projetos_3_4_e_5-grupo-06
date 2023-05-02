@@ -6,12 +6,15 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
+import business.*;
+
 public class PlataformaStreaming {
     private String nome;
-    private HashMap<String, Serie> series;
+    private HashMap<String, Serie> series; 
     private HashMap<String, Cliente> clientes;
     private Cliente clienteAtual;
 
@@ -155,22 +158,7 @@ public class PlataformaStreaming {
 	          e.printStackTrace();
 		}
 	}
-	
-	public void carregarSeries(String uri) {
-		try{
-			Scanner sc = new Scanner(new File(uri));
-			sc.useDelimiter(";|\n");
-			while (sc.hasNext()) {
-				System.out.print(" | " + sc.next()); 
-			}
-			System.out.println();
-			sc.close(); 
-		} catch(IOException e) {
-			System.out.println("Ocorreu um erro ao ler o arquivo de series no arquivo CSV.");
-	          e.printStackTrace();
-		}
-	}
-	
+
 	public void carregarAudiencia(String uri) {
 	    try {
 	    	Scanner sc = new Scanner(new File(uri));
@@ -185,5 +173,7 @@ public class PlataformaStreaming {
 	        e.printStackTrace();
 	    }
 	}
+
+    // getters and setters
 
 }

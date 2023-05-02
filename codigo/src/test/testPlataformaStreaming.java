@@ -151,13 +151,6 @@ class testPlataformaStreaming {
     }
     
     @Test
-   	public void testCarregarSeries() {
-    	//Passar a URI do arquivo
-    	plataforma.carregarSeries("C:\\Users\\1385832\\git\\projetos_3_4_e_5-grupo-06\\codigo\\POO_Series.csv");
-    	
-    }
-    
-    @Test
    	public void testCarregarAudiencia() {
     	//Passar a URI do arquivo
     	plataforma.carregarAudiencia("C:\\Users\\1385832\\git\\projetos_3_4_e_5-grupo-06\\codigo\\POO_Audiencia.csv");

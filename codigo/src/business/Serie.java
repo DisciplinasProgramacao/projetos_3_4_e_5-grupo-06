@@ -3,9 +3,9 @@ package business;
 public class Serie {
 	
 	//Declaração de variáveis
-	String nome, genero, idioma, data;
-	int quantidadeEpisodios, audiencia;
-	double id;
+	String nome, genero, idioma, data, dataLancamento;
+	int quantidadeEpisodios, audiencia, id;
+	
 	
 	//Construtor
 	
@@ -16,12 +16,27 @@ public class Serie {
 		setQuantidadeEpisodios(quantidadeEpisodios);
 		setAudiencia(audiencia);
 	}
+
+	public Serie(int id, String nome, String dataLancamento){
+		setId(id);
+		setNome(nome);
+		setDataLancamento(dataLancamento);
+	}
 	
 	//Getters e Setters
+
+	public String getDataLancamento() {
+		return dataLancamento;
+	}
+
+	public void setDataLancamento(String dataLancamento) {
+		this.dataLancamento = dataLancamento;
+	}
+
 	public double getId() {
 		return id;
 	}
-	public void setId(double id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getData() {
