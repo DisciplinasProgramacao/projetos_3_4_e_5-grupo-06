@@ -13,7 +13,8 @@ public class Catalogo {
     public Catalogo() {
         this.filmes = new ArrayList<>();
     }
-
+    
+    //Carregamento de filmes a partir de um arquivo
     public void carregarFilmes() {
         String caminhoArquivo = "C:\\Users\\dtiDIgital\\Downloads\\projetos_3_4_e_5-grupo-06-master (2)\\projetos_3_4_e_5-grupo-06\\codigo\\filmes.csv";
         Scanner sc;
