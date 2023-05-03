@@ -81,4 +81,15 @@ public class Serie {
 	public void registrarAudiencia() {
 		audiencia++;
 	}	
+	
+	 @Override
+	    public String toString() {
+	        return 
+	                " nome='" + getNome() + "'" +
+	                " genero='" + getGenero() + "'" +
+	                "; idioma='" + getIdioma() + "'" +
+	                " quantidade de episodios='" + getQuantidadeEpisodios() + "'" +
+	                "; audiencia='" + getAudiencia();
+	               
+	    }
 }

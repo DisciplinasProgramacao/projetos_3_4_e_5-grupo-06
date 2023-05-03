@@ -94,4 +94,12 @@ public class Cliente {
 		  getListaJaVistas().add(serie);
 		  serie.registrarAudiencia();
 	  }
+	 
+	 @Override
+	    public String toString() {
+	        return 
+	                " Nome de usuario='" + getNomeDeUsuario() + "'" +
+	                "; Senha='" + getSenha() + "'"
+	                ;
+	    }
 }
