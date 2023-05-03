@@ -87,9 +87,9 @@ public class Serie {
 	    public String toString() {
 	        return 
 	                " nome='" + getNome() + "'" +
-	                " genero='" + getGenero() + "'" +
+	                "; genero='" + getGenero() + "'" +
 	                "; idioma='" + getIdioma() + "'" +
-	                " quantidade de episodios='" + getQuantidadeEpisodios() + "'" +
+	                "; quantidade de episodios='" + getQuantidadeEpisodios() + "'" +
 	                "; audiencia='" + getAudiencia();
 	               
 	    }

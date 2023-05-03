@@ -103,8 +103,8 @@ class testPlataformaStreaming {
     //Teste de salvamento de séries em um arquivo csv
     @Test
    	public void testSalvarSeries() {
-    	Serie serie1 = new Serie("Série 1", "Drama", "Inglês", 10, 0);
-    	Serie serie2 = new Serie("Série 2", "Comedia", "Portugues", 10, 0);
+    	Serie serie1 = new Serie("Serie 1", "Drama", "Ingles", 10, 0);
+    	Serie serie2 = new Serie("Serie 2", "Comedia", "Portugues", 10, 0);
         serie1.setData("17/04/2023");
         serie1.setId(1);
         serie2.setData("17/04/2023");
@@ -124,8 +124,8 @@ class testPlataformaStreaming {
    	public void testSalvarAudiencia() {
     	Cliente c = new Cliente("Victor", "123");
     	Cliente c2 = new Cliente("Vitor", "1234");
-    	Serie serie1 = new Serie("Série 1", "Drama", "Inglês", 10, 0);
-    	Serie serie2 = new Serie("Série 2", "Comedia", "Portugues", 10, 0);
+    	Serie serie1 = new Serie("Serie 1", "Drama", "Ingles", 10, 0);
+    	Serie serie2 = new Serie("Serie 2", "Comedia", "Portugues", 10, 0);
         serie1.setData("17/04/2023");
         serie1.setId(1);
         serie2.setData("17/04/2023");
