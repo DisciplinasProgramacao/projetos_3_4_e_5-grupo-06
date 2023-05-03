@@ -82,6 +82,7 @@ public class Serie {
 		audiencia++;
 	}	
 	
+	// Metodo que pega os dados de uma entidade e transforma para o formato String
 	 @Override
 	    public String toString() {
 	        return 

@@ -15,10 +15,13 @@ public class Cliente {
         this.listaParaVer = new ArrayList<>();
         this.listaJaVistas = new ArrayList<>();
     }
+    
+ // Metodo que adiciona uma serie na lista "para ver"
     public void adicionarNaLista(Serie serie) {
         listaParaVer.add(serie);
     }
     
+    // Metodo que retira uma serie da lista "para ver"
     public void retirarDaLista(String nomeSerie) {
         for (Serie serie : listaParaVer) {
             if (serie.getNome().equals(nomeSerie)) {
@@ -95,6 +98,7 @@ public class Cliente {
 		  serie.registrarAudiencia();
 	  }
 	 
+	 // Metodo que pega os dados de uma entidade e transforma para o formato String
 	 @Override
 	    public String toString() {
 	        return 

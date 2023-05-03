@@ -112,6 +112,7 @@ public class PlataformaStreaming {
         serie.registrarAudiencia();
     }
     
+ // Metodo que escreve em um arquivo csv os dados dos espectadores da plataforma de streaming
     public void salvarEspectadores(String nomeArquivo, HashMap<String, Cliente> clientes, PlataformaStreaming a) {
     	
 		try (BufferedWriter writer = new BufferedWriter(new FileWriter(nomeArquivo, true))) {
@@ -125,6 +126,7 @@ public class PlataformaStreaming {
     }
 	}
     
+    // Metodo que escreve em um arquivo csv os dados das series da plataforma de streaming
     public void salvarSeries(String nomeArquivo, HashMap<String, Serie> series) {
     	
   		try (BufferedWriter writer = new BufferedWriter(new FileWriter(nomeArquivo, true))) {
@@ -138,6 +140,7 @@ public class PlataformaStreaming {
       }
   	}
     
+ // Metodo que escreve em um arquivo csv os dados da audiencia da plataforma de streaming
  public void salvarAudiencia(String nomeArquivo, PlataformaStreaming a, HashMap<String, Cliente> clientes, HashMap<String, Serie> series) {
     	
   		try (BufferedWriter writer = new BufferedWriter(new FileWriter(nomeArquivo, true))) {
@@ -154,6 +157,7 @@ public class PlataformaStreaming {
       }
   	}
  
+ // Metodo que le e carrega dados de um arquivo csv
  public void carregarEspectadores(String uri) {
 		try{
 			Scanner sc = new Scanner(new File(uri));
@@ -169,6 +173,7 @@ public class PlataformaStreaming {
 		}
 	}
 
+ // Metodo que le e carrega dados de um arquivo csv
 	public void carregarAudiencia(String uri) {
 	    try {
 	    	Scanner sc = new Scanner(new File(uri));
