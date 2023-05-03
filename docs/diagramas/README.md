@@ -3,3 +3,5 @@
 ![Diagrama](../diagramas/Diagrama1.png)
 ## Diagrama 2
 ![Diagrama](../diagramas/Diagrama2.png)
+## Diagrama 2
+![Diagrama](../diagramas/Diagrama3.png)
