@@ -7,23 +7,30 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
-
 public class Catalogo {
     private List<Filme> filmes;
     private List<Serie> series;
 
+    /**
+     * Construtor da classe Catalogo. Inicializa as listas de filmes e séries.
+     */
     public Catalogo() {
         this.filmes = new ArrayList<>();
         this.series = new ArrayList<>();
     }
-    
-    //Carregamento de filmes a partir de um arquivo
+
+    /**
+     * Carrega os filmes a partir de um arquivo CSV.
+     * 
+     * @throws InputMismatchException exceção lançada quando ocorre um erro na
+     *                                leitura do arquivo.
+     */
     public void carregarFilmes() {
         String caminhoArquivo = "C:\\Users\\dtiDIgital\\Downloads\\projetos_3_4_e_5-grupo-06-master (2)\\projetos_3_4_e_5-grupo-06\\codigo\\filmes.csv";
         Scanner sc;
         try {
             sc = new Scanner(new File(caminhoArquivo));
-            while(sc.hasNext()) {
+            while (sc.hasNext()) {
                 String a = sc.nextLine();
                 String elementos[] = a.split(";");
                 int id = Integer.parseInt(elementos[0]);
@@ -32,7 +39,7 @@ public class Catalogo {
                 int duracao = Integer.parseInt(elementos[3]);
                 Filme filme = new Filme(id, nome, dataLancamento, duracao);
                 this.filmes.add(filme); // adicionar filme a lista
-            }      
+            }
             sc.close();
             System.out.println("Arquivo carregado com sucesso.");
         } catch (InputMismatchException e) {
@@ -42,13 +49,19 @@ public class Catalogo {
         }
     }
 
+    /**
+     * Carrega as séries a partir de um arquivo CSV.
+     * 
+     * @throws InputMismatchException exceção lançada quando ocorre um erro na
+     *                                leitura do arquivo.
+     */
     public void carregarSeries() {
         String caminhoArquivo = "C:\\Users\\dtiDIgital\\Downloads\\projetos_3_4_e_5-grupo-06-master (2)\\projetos_3_4_e_5-grupo-06\\codigo\\series.csv";
         Scanner sc;
         try {
             sc = new Scanner(new File(caminhoArquivo));
             sc.nextLine();
-            while(sc.hasNext()) {
+            while (sc.hasNext()) {
                 String a = sc.nextLine();
                 String elementos[] = a.split(";");
                 int id = Integer.parseInt(elementos[0]);
@@ -57,7 +70,7 @@ public class Catalogo {
                 Serie serie = new Serie(id, nome, dataLancamento);
                 System.out.println(serie.getId() + ", " + serie.getNome() + ", " + serie.getDataLancamento());
                 this.series.add(serie); // adiciona serie a lista
-            }      
+            }
             sc.close();
             System.out.println("Arquivo carregado com sucesso.");
         } catch (InputMismatchException e) {
