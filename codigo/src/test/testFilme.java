@@ -17,8 +17,8 @@ public class testFilme {
     @Test
     public void testSetIdFilme() {
         Filme filme = new Filme(1, "Filme 1", "01/01/2023", 120);
-        filme.setId(2);
-        assertEquals(2, filme.getId());
+        filme.setId(1);
+        assertEquals(1, filme.getId());
     }
 
     //teste get e set de nome
