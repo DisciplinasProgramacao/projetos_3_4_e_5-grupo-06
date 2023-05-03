@@ -2,13 +2,20 @@ package business;
 
 public class Filme {
 
-
     public int idFilme;
     private String nome;
     private String dataLancamento;
     private int duracao;
-    
-    // construtor
+
+    /**
+     * 
+     * Construtor da classe Filme.
+     * 
+     * @param idFilme        o identificador do filme
+     * @param nome           o nome do filme
+     * @param dataLancamento a data de lançamento do filme
+     * @param duracao        a duração do filme em minutos
+     */
     public Filme(int idFilme, String nome, String dataLancamento, int duracao) {
         this.idFilme = idFilme;
         this.nome = nome;
@@ -16,11 +23,11 @@ public class Filme {
         this.duracao = duracao;
     }
 
-    //getters and setters
+    // getters and setters
     public int getId() {
         return idFilme;
     }
-    
+
     public void setId(int id) {
         this.idFilme = idFilme;
     }
@@ -36,7 +43,7 @@ public class Filme {
     public String getDataLancamento() {
         return dataLancamento;
     }
-    
+
     public void setDataLancamento(String dataLancamento) {
         this.dataLancamento = dataLancamento;
     }
@@ -44,7 +51,7 @@ public class Filme {
     public int getDuracao() {
         return duracao;
     }
-    
+
     public void setDuracao(int duracao) {
         this.duracao = duracao;
     }
