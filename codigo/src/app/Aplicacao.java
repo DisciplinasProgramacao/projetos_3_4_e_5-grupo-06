@@ -1,4 +1,3 @@
-
 package app;
 
 import java.io.IOException;
@@ -11,7 +10,7 @@ public class Aplicacao {
     public static void main(String[] args)throws IOException {
        
     
-    	PlataformaStreaming plataforma = new PlataformaStreaming("testar");         
+    	PlataformaStreaming plataforma = new PlataformaStreaming("Goflix");         
 		
         Scanner scanner = new Scanner(System.in);
         
@@ -20,10 +19,11 @@ public class Aplicacao {
             System.out.println("Menu:");
             System.out.println("1. Adicionar série");
             System.out.println("2. Adicionar filme"); 
-            System.out.println("3. Adicionar cliente");
+            System.out.println("3. Registrar cliente");
             System.out.println("4. Fazer login");
             System.out.println("5. Carregar lista de filmes");
             System.out.println("6. Carregar lista de séries");
+            System.out.println("6. Carregar audiência de séries");
             System.out.println("0. Sair");
 
             System.out.print("Escolha uma opção: ");
@@ -103,15 +103,15 @@ public class Aplicacao {
                 
                 plataforma.login(nomeUsuario, senha);
             	
-                //if (nomeUsuario) == null){
-                //	System.out.println("Erro no login: usario nao encontrado");
-                //  System.out.println();
-                // }
+                if (nomeUsuario == null){
+                 System.out.println("Erro no login: usario nao encontrado");
+                  System.out.println();
+                 }
                 
-                //else {
-                //    System.out.println("Erro no login: senha incorreta");
-                //}
-                //System.out.println();
+                else {
+                    System.out.println("Erro no login: senha incorreta");
+                }
+                System.out.println();
                 break;
             case 5:
             	// Carregando lista de filmes
@@ -132,25 +132,21 @@ public class Aplicacao {
         		System.out.println(serie1.getId() + ", " + serie1.getNome() + ", " + serie1.getDataLancamento());
             	}
             	break;
+            	
+            case 7:
+            	//Carregando lista de audiência
+            	PlataformaStreaming p = new PlataformaStreaming("OiFlix");
+            	System.out.println("Lista de audiência:");
+                p.carregarAudiencia("caminhoarquivo");
+                
+                break;
             case 0:
                 System.out.println("Saindo...");
                 scanner.close();
                 return;
 	}
 		
-    	
-
-        
-
-        // Carregando lista de audiência
-        // catalogo.carregarAudiencia("caminhoarquivo");
-        // System.out.println("Lista de audiência:");
-        // for (Audiencia audiencia : catalogo.getAudiencia()) {
-        // System.out.println(audiencia.getId() + ", " + audiencia.getData() + ", " +
-        // audiencia.getQuantidadeEspectadores());
-        // }
+            }
     }
 
 }
-}
-
