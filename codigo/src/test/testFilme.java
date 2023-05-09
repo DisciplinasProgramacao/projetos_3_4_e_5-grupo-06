@@ -85,7 +85,7 @@ public class testFilme {
     }
     @Test
     public void testAvaliarFilmeacima() {
-        Filme filme = new Filme(1, "Filme Teste", "01/01/2022", 120, 1);
+        Filme filme = new Filme(1, "Filme Teste", "01/01/2022", 120, -1);
         // testando avaliação acima do intervalo permitido
         filme.avaliarFilme(6);
         Assert.assertEquals(-1, filme.getAvaliacao());
