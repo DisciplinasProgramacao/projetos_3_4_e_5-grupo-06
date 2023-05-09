@@ -276,4 +276,13 @@ Método que lê e carrega dados de um arquivo CSV com informações de audiênci
 	    }
 	}
 
+//public List<Filme> buscarFilmePorNome(String nome) {
+   // List<Filme> resultado = new ArrayList<>();
+    //for (Filme filme : filmes.values()) {
+       // if (filme.getNome() == nome) {
+           // resultado.add(filme);
+        //}
+   // }
+    //return resultado;
+}
 }

@@ -23,7 +23,7 @@ public class Aplicacao {
             System.out.println("4. Fazer login");
             System.out.println("5. Carregar lista de filmes");
             System.out.println("6. Carregar lista de séries");
-            System.out.println("6. Carregar audiência de séries");
+            System.out.println("7. Carregar audiência de séries");
             System.out.println("0. Sair");
 
             System.out.print("Escolha uma opção: ");
