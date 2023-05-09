@@ -30,7 +30,7 @@ public class Filme {
         this.nome = nome;
         this.dataLancamento = dataLancamento;
         this.duracao = duracao;
-        this.avaliacao = avaliacao;
+        this.avaliacao = -1; //para filmes que não foram avaliados
     }
 
     /**
