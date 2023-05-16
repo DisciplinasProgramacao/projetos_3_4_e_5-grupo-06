@@ -10,7 +10,7 @@
 | Como um administrador, eu quero     | Registrar audiência de uma série quando ela for vista por um cliente    | Para manter a relevência de cada título    | concluído   | Victor  |
 | Como um cliente, eu quero     | Que uma série saia da minha lista de Para Ver e entre na Já Vistos quando eu a assistir   | Para manter os registros atualizados    | concluído   | Juliana  |
 | Como um cliente, eu quero     | Que um filme saia da minha lista de Para Ver e entre na Já Vistos   | Para manter os registros atualizados    | concluído   | Luana  |
-
+| Como um cliente, eu quero     | Poder filtrar as minhas buscas por titulo, idioma e gênero  | Para facilitar a busca   | concluído   | Luana  |
 
 
 
