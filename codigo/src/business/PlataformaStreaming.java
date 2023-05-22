@@ -265,11 +265,13 @@ Método que lê e carrega dados de um arquivo CSV com informações de audiênci
 	    try {
 	    	Scanner sc = new Scanner(new File(uri));
 	        sc.useDelimiter(";|\n");
-	        while (sc.hasNextLine()) {
+	        while (sc.hasNext()) {
 	            System.out.print(" | " + sc.next());
 	        }
 	        System.out.println();
+	        
 	        sc.close();
+	   
 	    } catch (IOException e) {
 	        System.out.println("Ocorreu um erro ao ler o arquivo de audiencia no arquivo CSV.");
 	        e.printStackTrace();

@@ -94,7 +94,7 @@ class testPlataformaStreaming {
         plataforma.adicionarCliente(cliente);
         plataforma.adicionarCliente(c2);
         
-        plataforma.salvarEspectadores("espectador.csv", plataforma.getTodosClientes(), plataforma);
+        plataforma.salvarEspectadores("espectadores salvos.csv", plataforma.getTodosClientes(), plataforma);
         assertEquals(cliente, plataforma.login(cliente.getNomeDeUsuario(), cliente.getSenha()));
         assertEquals(c2, plataforma.login(c2.getNomeDeUsuario(), c2.getSenha()));
         
@@ -111,7 +111,7 @@ class testPlataformaStreaming {
         serie2.setId(2);
         plataforma.adicionarSerie(serie1);
         plataforma.adicionarSerie(serie2);
-        plataforma.salvarSeries("series.csv", plataforma.getTodasSeries());
+        plataforma.salvarSeries("series salvas.csv", plataforma.getTodasSeries());
            
         
         assertEquals(1, serie1.getId());
@@ -139,7 +139,7 @@ class testPlataformaStreaming {
         c2.registrarAudiencia(serie1);
         plataforma.registrarAudiencia(serie1);
         plataforma.registrarAudiencia(serie1);
-        plataforma.salvarAudiencia("audiencia.csv", plataforma, plataforma.getTodosClientes(), plataforma.getTodasSeries());
+        plataforma.salvarAudiencia("audiencia salva.csv", plataforma, plataforma.getTodosClientes(), plataforma.getTodasSeries());
  
            
            
@@ -150,14 +150,14 @@ class testPlataformaStreaming {
     @Test
     public void testCarregarEspectadores() {
     	//Passar a URI do arquivo
-        plataforma.carregarEspectadores("C:\\Users\\1385832\\git\\projetos_3_4_e_5-grupo-06\\codigo\\POO_Espectadores.csv");
+        plataforma.carregarEspectadores("espectadores.csv");
         
     }
     
     @Test
    	public void testCarregarAudiencia() {
     	//Passar a URI do arquivo
-    	plataforma.carregarAudiencia("C:\\Users\\1385832\\git\\projetos_3_4_e_5-grupo-06\\codigo\\POO_Audiencia.csv");
+    	plataforma.carregarAudiencia("audiencia.csv");
     	
     }
     

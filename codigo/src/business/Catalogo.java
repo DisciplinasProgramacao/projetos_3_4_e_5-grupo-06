@@ -26,7 +26,7 @@ public class Catalogo {
      *                                leitura do arquivo.
      */
     public void carregarFilmes() {
-        String caminhoArquivo = "C:\\Users\\dtiDIgital\\Downloads\\projetos_3_4_e_5-grupo-06-master (2)\\projetos_3_4_e_5-grupo-06\\codigo\\filmes.csv";
+        String caminhoArquivo = "filmes.csv";
         Scanner sc;
         try {
             sc = new Scanner(new File(caminhoArquivo));
@@ -56,7 +56,7 @@ public class Catalogo {
      *                                leitura do arquivo.
      */
     public void carregarSeries() {
-        String caminhoArquivo = "C:\\Users\\dtiDIgital\\Downloads\\projetos_3_4_e_5-grupo-06-master (2)\\projetos_3_4_e_5-grupo-06\\codigo\\series.csv";
+        String caminhoArquivo = "series.csv";
         Scanner sc;
         try {
             sc = new Scanner(new File(caminhoArquivo));

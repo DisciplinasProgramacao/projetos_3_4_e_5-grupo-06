@@ -137,7 +137,7 @@ public class Aplicacao {
             	//Carregando lista de audiência
             	PlataformaStreaming p = new PlataformaStreaming("OiFlix");
             	System.out.println("Lista de audiência:");
-                p.carregarAudiencia("caminhoarquivo");
+                p.carregarAudiencia("audiencia.csv");
                 
                 break;
             case 0:
