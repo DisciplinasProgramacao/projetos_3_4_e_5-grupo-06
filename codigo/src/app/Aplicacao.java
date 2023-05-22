@@ -11,7 +11,8 @@ public class Aplicacao {
        
     
     	PlataformaStreaming plataforma = new PlataformaStreaming("Goflix");         
-		
+    	Catalogo catalogo = new Catalogo();
+    	
         Scanner scanner = new Scanner(System.in);
         
     	
@@ -23,7 +24,8 @@ public class Aplicacao {
             System.out.println("4. Fazer login");
             System.out.println("5. Carregar lista de filmes");
             System.out.println("6. Carregar lista de séries");
-            System.out.println("7. Carregar audiência de séries");
+            System.out.println("7. Carregar audiência");
+            System.out.println("8. Carregar espectadores");
             System.out.println("0. Sair");
 
             System.out.print("Escolha uma opção: ");
@@ -115,7 +117,7 @@ public class Aplicacao {
                 break;
             case 5:
             	// Carregando lista de filmes
-            	Catalogo catalogo = new Catalogo();
+ 
             	catalogo.carregarFilmes();
             	System.out.println("Lista de filmes:");
             	for (Filme filme1 : catalogo.getFilmes()) {
@@ -125,19 +127,27 @@ public class Aplicacao {
             	
             case 6:
             	// Carregar lista de séries 
-            	Catalogo catalogoSerie = new Catalogo();
-            	catalogoSerie.carregarSeries();
+            	
+            	
+            	catalogo.carregarSeries();
             	System.out.println("Lista de séries:");
-            	for (Serie serie1 : catalogoSerie.getSerie()) {
+            	for (Serie serie1 : catalogo.getSerie()) {
         		System.out.println(serie1.getId() + ", " + serie1.getNome() + ", " + serie1.getDataLancamento());
             	}
             	break;
             	
             case 7:
             	//Carregando lista de audiência
-            	PlataformaStreaming p = new PlataformaStreaming("OiFlix");
+            
             	System.out.println("Lista de audiência:");
-                p.carregarAudiencia("audiencia.csv");
+                plataforma.carregarAudiencia("audiencia.csv");
+                
+                break;
+            case 8:
+            	//Carregando lista de espectadores
+            	
+            	System.out.println("Lista de espectadores");
+                plataforma.carregarEspectadores("espectador.csv");
                 
                 break;
             case 0:
