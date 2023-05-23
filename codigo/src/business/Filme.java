@@ -1,11 +1,8 @@
 package business;
 
-public class Filme {
+public class Filme extends Midia{
 
-    public int idFilme;
-    private String nome;
-    private String dataLancamento;
-    private int duracao;
+ 
 
     /**
      * 
@@ -16,8 +13,8 @@ public class Filme {
      * @param dataLancamento a data de lançamento do filme
      * @param duracao        a duração do filme em minutos
      */
-    public Filme(int idFilme, String nome, String dataLancamento, int duracao) {
-        this.idFilme = idFilme;
+    public Filme(int id, String nome, String dataLancamento, int duracao) {
+        this.id = id;
         this.nome = nome;
         this.dataLancamento = dataLancamento;
         this.duracao = duracao;
@@ -29,42 +26,27 @@ public class Filme {
      * 
      * @param avaliacao a nota atribuída pelo cliente (entre 1 e 5)
      */
-    //public void avaliarFilme(int avaliacao) {
-        //if (avaliacao >= 1 && avaliacao <= 5) {
-            //this.avaliacao = avaliacao;
-        //}
-   // }
-
-    // getters and setters
-    public int getId() {
-        return idFilme;
+    @Override
+    public void avaliar(int avaliacao) {
+        if (avaliacao >= 1 && avaliacao <= 5) {
+            this.avaliacao = avaliacao;
+            System.out.println("Filme avaliado com sucesso!");
+        }else {
+        	System.out.println("Avaliacao invalida. Tente avaliar com numeros de 1 a 5!");
+        }
     }
+    
+ // Metodo que pega os dados de uma entidade e transforma para o formato String
+ 	 @Override
+ 	    public String toString() {
+ 	        return 
+ 	                " nome='" + getNome() + "'" +
+ 	                "; genero='" + getGenero() + "'" +
+ 	                "; idioma='" + getIdioma() + "'" +
+ 	                "; quantidade de episodios='" + getQuantidadeEpisodios() + "'" +
+ 	                "; audiencia='" + getAudiencia();
+ 	               
+ 	    }
 
-    public void setId(int id) {
-        this.idFilme = idFilme;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getDataLancamento() {
-        return dataLancamento;
-    }
-
-    public void setDataLancamento(String dataLancamento) {
-        this.dataLancamento = dataLancamento;
-    }
-
-    public int getDuracao() {
-        return duracao;
-    }
-
-    public void setDuracao(int duracao) {
-        this.duracao = duracao;
-    }
+   
 }

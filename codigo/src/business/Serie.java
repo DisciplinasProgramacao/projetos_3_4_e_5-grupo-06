@@ -1,11 +1,6 @@
 package business;
 
-public class Serie {
-	
-	//Declaração de variáveis
-	String nome, genero, idioma, data, dataLancamento;
-	int quantidadeEpisodios, audiencia, id;
-	
+public class Serie extends Midia{
 	
 	//Construtor
 	
@@ -23,64 +18,22 @@ public class Serie {
 		setDataLancamento(dataLancamento);
 	}
 	
-	//Getters e Setters
-
-	public String getDataLancamento() {
-		return dataLancamento;
-	}
-
-	public void setDataLancamento(String dataLancamento) {
-		this.dataLancamento = dataLancamento;
-	}
-
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public String getData() {
-		return data;
-	}
-	public void setData(String data) {
-		this.data = data;
-	}
-	public String getNome() {
-		return nome;
-	}
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-	public String getGenero() {
-		return genero;
-	}
-	public void setGenero(String genero) {
-		this.genero = genero;
-	}
-	public int getQuantidadeEpisodios() {
-		return quantidadeEpisodios;
-	}
-	public void setQuantidadeEpisodios(int quantidadeEpisodios) {
-		this.quantidadeEpisodios = quantidadeEpisodios;
-	}
-	public int getAudiencia() {
-		return audiencia;
-	}
-	public void setAudiencia(int audiencia) {
-		this.audiencia = audiencia;
-	}
-	public void setIdioma(String idioma) {
-		this.idioma = idioma;
-	}
 	
-	public String getIdioma() {
-		return idioma;
-	}
-	
-	//Registro de audiência
-	public void registrarAudiencia() {
-		audiencia++;
-	}	
+	/**
+     * 
+     * Método que permite ao cliente avaliar a serie com uma nota entre 1 e 5.
+     * 
+     * @param avaliacao a nota atribuída pelo cliente (entre 1 e 5)
+     */
+	@Override
+    public void avaliar(int avaliacao) {
+        if (avaliacao >= 1 && avaliacao <= 5) {
+            this.avaliacao = avaliacao;
+            System.out.println("Serie avaliada com sucesso!");
+        }else {
+        	System.out.println("Avaliacao invalida. Tente avaliar com numeros de 1 a 5!");
+        }
+    }
 	
 	// Metodo que pega os dados de uma entidade e transforma para o formato String
 	 @Override
