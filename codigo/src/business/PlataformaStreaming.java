@@ -18,7 +18,9 @@ public class PlataformaStreaming {
 	private HashMap<String, Cliente> clientes;
 	private HashMap<String, Filme> filmes;
 	private Cliente clienteAtual;
-
+	private int porcentCliAvaBaixa;
+	
+	
 	/**
 	 * Construtor da classe PlataformaStreaming
 	 * 
@@ -75,7 +77,30 @@ public class PlataformaStreaming {
 	public HashMap<String, Filme> getTodosFilmes() {
 		return this.filmes;
 	}
-
+	
+	/**
+	 * Método getter da porcentCliAvaBaixa
+	 * 
+	 * @return Retorna a quantidade de clientes com baixa porcentagem
+	 */
+	
+	public int getPorcentCliAvaBaixa() {
+		return this.porcentCliAvaBaixa;
+	}
+	/**
+	 * Método para ver a porcentagem de clientes com avaliacao menor que 15
+	 * 
+	 * @return Retorna a porcentagem de clientes com avaliacao menor que 15
+	 */
+	public float proctAvalClientes() {
+		float qnt;
+		for(this.clientes : clientes.getAvaliacaoM15())
+			if(clientes.getAvaliacaoM15 == true) 
+				qnt++;
+		return (float)(qnt/this.clientes.size());
+		
+	}
+	
 	/**
 	 * Método para adicionar uma nova série à plataforma de streaming
 	 * 
