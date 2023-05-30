@@ -9,7 +9,7 @@ public class Cliente {
 	private List<Serie> listaParaVer;
 	private List<Serie> listaJaVistas;
 	private int contadorMidiasAssistidas;
-	private boolean avaliacaoM15 = true;
+	private boolean avaliacaoM15;
 	
 	/**
 	 * 
@@ -142,7 +142,7 @@ public class Cliente {
 	}
 	
 	public boolean setAvaliacaoM15() {
-		//if(avaliacao<15)
+		//if(this.avaliacao<15)
 			this.avaliacaoM15 = true;
 		//else
 			//this.avaliacaoM15 = false;
