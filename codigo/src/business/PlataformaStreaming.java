@@ -18,7 +18,7 @@ public class PlataformaStreaming {
 	private HashMap<String, Cliente> clientes;
 	private HashMap<String, Filme> filmes;
 	private Cliente clienteAtual;
-	private int porcentCliAvaBaixa;
+	private int porcentCliAvaAlta;
 	
 	
 	/**
@@ -84,20 +84,21 @@ public class PlataformaStreaming {
 	 * @return Retorna a quantidade de clientes com baixa porcentagem
 	 */
 	
-	public int getPorcentCliAvaBaixa() {
-		return this.porcentCliAvaBaixa;
+	public float getPorcentCliAvaAlta() {
+		return this.porcentCliAvaAlta;
 	}
 	/**
 	 * Método para ver a porcentagem de clientes com avaliacao menor que 15
 	 * 
 	 * @return Retorna a porcentagem de clientes com avaliacao menor que 15
 	 */
-	public float proctAvalClientes() {
+	public float porctAvalClientes() {
 		float qnt;
 		for(this.clientes : clientes.getAvaliacaoM15())
 			if(clientes.getAvaliacaoM15 == true) 
 				qnt++;
-		return (float)(qnt/this.clientes.size());
+		this.porcentCliAvaAlta;
+		return (float)((this.clientes.size()-qnt)/this.clientes.size());
 		
 	}
 	
@@ -360,4 +361,14 @@ public class PlataformaStreaming {
 	// }
 	// }
 	// return resultado;
+	
+	/**
+	 * Método para ver qual cliente possui mais avaliações
+	 * 
+	 *@return Retorna o cliente
+	 */
+	
+	//public Cliente maisAva() {
+		
+	//}
 }
