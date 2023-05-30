@@ -8,6 +8,7 @@ public class Cliente {
 	private String senha;
 	private List<Serie> listaParaVer;
 	private List<Serie> listaJaVistas;
+	private int contadorMidiasAssistidas;
 
 	/**
 	 * 
@@ -21,6 +22,7 @@ public class Cliente {
 		this.senha = senha;
 		this.listaParaVer = new ArrayList<>();
 		this.listaJaVistas = new ArrayList<>();
+		this.contadorMidiasAssistidas = 0;
 	}
 
 	/**
@@ -166,5 +168,15 @@ public class Cliente {
 	public String toString() {
 		return " Nome de usuario='" + getNomeDeUsuario() + "'" +
 				"; Senha='" + getSenha() + "'";
+	
 	}
+	public void incrementarContadorMidiasAssistidas() {
+        contadorMidiasAssistidas++;
+    }
+
+    public int getContadorMidiasAssistidas() {
+        return contadorMidiasAssistidas;
+    }
 }
+
+	
