@@ -9,7 +9,8 @@ public class Cliente {
 	private List<Serie> listaParaVer;
 	private List<Serie> listaJaVistas;
 	private int contadorMidiasAssistidas;
-
+	private boolean avaliacaoM15 = true;
+	
 	/**
 	 * 
 	 * Construtor da classe Cliente.
@@ -136,6 +137,17 @@ public class Cliente {
 		this.listaJaVistas = listaJaVistas;
 	}
 
+	public boolean getAvaliacaoM15() {
+		return this.avaliacaoM15;
+	}
+	
+	public boolean setAvaliacaoM15() {
+		//if(avaliacao<15)
+			this.avaliacaoM15 = true;
+		//else
+			//this.avaliacaoM15 = false;
+	}
+	
 	/**
 	 * 
 	 * Registra a audiência de uma série específica.
