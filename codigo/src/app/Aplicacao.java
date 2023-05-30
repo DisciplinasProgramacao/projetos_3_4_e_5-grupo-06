@@ -30,6 +30,7 @@ public class Aplicacao {
 			System.out.println("9. Filtrar por genero");
 			System.out.println("10. Filtrar por idioma");
 			System.out.println("11. Filtrar por quantidade de episodios");
+			System.out.println("12. Qual cliente assistiu mais mídias");
 			System.out.println("0. Sair");
 
 			System.out.print("Escolha uma opção: ");
@@ -107,15 +108,19 @@ public class Aplicacao {
 				System.out.println("Insira a senha:");
 				String senha = scanner.nextLine();
 
-				plataforma.login(nomeUsuario, senha);
+				Cliente clienteLogado = plataforma.login(nomeUsuario, senha);
 
 				if (nomeUsuario == null){
 					System.out.println("Erro no login: usario nao encontrado");
 					System.out.println();
 				}
-
-				else {
+				if (senha == null) {
 					System.out.println("Erro no login: senha incorreta");
+				}
+				else {
+					System.out.println("Login realizado com sucesso");
+			        // Registra a visualização de mídias pelo cliente logado
+			        plataforma.registrarVisualizacao(clienteLogado);
 				}
 				System.out.println();
 				break;
@@ -209,12 +214,22 @@ public class Aplicacao {
 					break;
 				}
 				
+			case 12 :
+				
+				Cliente clienteMaisMidiasAssistidas = plataforma.obterClienteComMaisMidiasAssistidas();
+				if (clienteMaisMidiasAssistidas != null) {
+				    System.out.println("Cliente que assistiu mais mídias: " + clienteMaisMidiasAssistidas.getNomeDeUsuario());
+				    System.out.println("Quantidade de mídias assistidas: " + clienteMaisMidiasAssistidas.getContadorMidiasAssistidas());
+				} else {
+				    System.out.println("Nenhum cliente registrado");
+				}
+				System.out.println();
 			case 0:
 				System.out.println("Saindo...");
 				scanner.close();
 				return;
 			}
-
+			
 		}
 	}
 
