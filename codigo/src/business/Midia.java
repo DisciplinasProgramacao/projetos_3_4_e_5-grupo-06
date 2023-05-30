@@ -9,7 +9,7 @@ public abstract class Midia {
 	private int quantidadeEpisodios, audiencia;
 	protected int id;
 	protected int duracao;
-	protected int avaliacao;
+	private int avaliacao = 0;
 	
 	
 	
@@ -73,6 +73,14 @@ public abstract class Midia {
 
 	    public void setDuracao(int duracao) {
 	        this.duracao = duracao;
+	    }
+	    
+	    public int getAvaliacao() {
+	    	return this.avaliacao
+	    }
+	    
+	    public void setAvaliacao(int avaliacao) {
+	    	this.avaliacao = avaliacao;
 	    }
 	    
 	  //Registro de audiência
