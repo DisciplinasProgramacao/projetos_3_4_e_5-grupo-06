@@ -81,16 +81,16 @@ public class PlataformaStreaming {
 	/**
 	 * Método getter da porcentCliAvaBaixa
 	 * 
-	 * @return Retorna a quantidade de clientes com baixa porcentagem
+	 * @return Retorna a quantidade de clientes com alta porcentagem
 	 */
 	
 	public float getPorcentCliAvaAlta() {
 		return porctAvalClientes();
 	}
 	/**
-	 * Método para ver a porcentagem de clientes com avaliacao menor que 15
+	 * Método para ver a porcentagem de clientes com avaliacao maior que 15
 	 * 
-	 * @return Retorna a porcentagem de clientes com avaliacao menor que 15
+	 * @return Retorna a porcentagem de clientes com avaliacao maior que 15
 	 */
 	public float porctAvalClientes() {
 		float qnt;
@@ -99,6 +99,23 @@ public class PlataformaStreaming {
 				qnt++;
 		return (float)((this.clientes.size()-qnt)/this.clientes.size());
 		
+	}
+	
+	/**
+	 * Método para ver qual cliente possui mais avaliações
+	 * 
+	 * @return Cliente;
+	 */
+	
+	public Cliente clienteMaiorAva() {
+		Cliente maiorAva;
+		int posicao = 0;
+		for(this.clientes : clientes.quantidadeAva()) {
+			if(clientes.get(posicao).quantidadeAva() > clientes.get(posicao-1).quantidadeAva())
+				maiorAva = clientes.get(posicao);
+			posicao++;
+		}
+		return maiorAva;
 	}
 	
 	/**
