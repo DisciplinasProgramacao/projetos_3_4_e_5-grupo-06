@@ -142,12 +142,19 @@ public class Cliente {
 	}
 	
 	public boolean setAvaliacaoM15() {
-		//if(this.avaliacao<15)
+		if(this.quantidadeAva()<15)
 			this.avaliacaoM15 = true;
-		//else
-			//this.avaliacaoM15 = false;
+		else
+			this.avaliacaoM15 = false;
 	}
 	
+	public int quantidadeAva() {
+		int qnt;
+		for(this.listaJaVistas : listaJaVistas.getAvaliacao())
+			if(listaJaVistas.getAvaliacao()!=0)
+				qnt++;
+		return qnt;
+	}
 	/**
 	 * 
 	 * Registra a audiência de uma série específica.
