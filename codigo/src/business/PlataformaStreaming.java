@@ -85,7 +85,7 @@ public class PlataformaStreaming {
 	 */
 	
 	public float getPorcentCliAvaAlta() {
-		return this.porcentCliAvaAlta;
+		return porctAvalClientes();
 	}
 	/**
 	 * Método para ver a porcentagem de clientes com avaliacao menor que 15
@@ -97,7 +97,6 @@ public class PlataformaStreaming {
 		for(this.clientes : clientes.getAvaliacaoM15())
 			if(clientes.getAvaliacaoM15 == true) 
 				qnt++;
-		this.porcentCliAvaAlta;
 		return (float)((this.clientes.size()-qnt)/this.clientes.size());
 		
 	}
