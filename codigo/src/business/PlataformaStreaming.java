@@ -18,9 +18,7 @@ public class PlataformaStreaming {
 	private HashMap<String, Cliente> clientes;
 	private HashMap<String, Filme> filmes;
 	private Cliente clienteAtual;
-	private int porcentCliAvaAlta;
-	
-	
+
 	/**
 	 * Construtor da classe PlataformaStreaming
 	 * 
@@ -77,47 +75,7 @@ public class PlataformaStreaming {
 	public HashMap<String, Filme> getTodosFilmes() {
 		return this.filmes;
 	}
-	
-	/**
-	 * Método getter da porcentCliAvaBaixa
-	 * 
-	 * @return Retorna a quantidade de clientes com alta porcentagem
-	 */
-	
-	public float getPorcentCliAvaAlta() {
-		return porctAvalClientes();
-	}
-	/**
-	 * Método para ver a porcentagem de clientes com avaliacao maior que 15
-	 * 
-	 * @return Retorna a porcentagem de clientes com avaliacao maior que 15
-	 */
-	public float porctAvalClientes() {
-		float qnt;
-		for(this.clientes : clientes.getAvaliacaoM15())
-			if(clientes.getAvaliacaoM15 == true) 
-				qnt++;
-		return (float)((this.clientes.size()-qnt)/this.clientes.size());
-		
-	}
-	
-	/**
-	 * Método para ver qual cliente possui mais avaliações
-	 * 
-	 * @return Cliente;
-	 */
-	
-	public Cliente clienteMaiorAva() {
-		Cliente maiorAva;
-		int posicao = 0;
-		for(this.clientes : clientes.quantidadeAva()) {
-			if(clientes.get(posicao).quantidadeAva() > clientes.get(posicao-1).quantidadeAva())
-				maiorAva = clientes.get(posicao);
-			posicao++;
-		}
-		return maiorAva;
-	}
-	
+
 	/**
 	 * Método para adicionar uma nova série à plataforma de streaming
 	 * 
@@ -377,14 +335,4 @@ public class PlataformaStreaming {
 	// }
 	// }
 	// return resultado;
-	
-	/**
-	 * Método para ver qual cliente possui mais avaliações
-	 * 
-	 *@return Retorna o cliente
-	 */
-	
-	//public Cliente maisAva() {
-		
-	//}
 }
