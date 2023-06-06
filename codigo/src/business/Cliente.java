@@ -1,9 +1,11 @@
 package business;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Cliente {
+	protected LocalDate dataAssistida;
 	private String nomeDeUsuario;
 	private String senha;
 	private List<Serie> listaParaVer;
@@ -148,10 +150,14 @@ public class Cliente {
 	 *              de visualizações dessa série.
 	 */
 	public void registrarAudiencia(Serie serie) {
-		retirarDaLista(serie.getNome());
-		getListaJaVistas().add(serie);
-		serie.registrarAudiencia();
-	}
+        retirarDaLista(serie.getNome());
+        getListaJaVistas().add(serie);
+        serie.registrarAudiencia();
+
+        // Adicionar a data atual à série assistida
+        LocalDate dataAtual = LocalDate.now();
+		setDataAssistida(dataAtual);
+    }
 
 	/**
 	 * 
@@ -176,6 +182,15 @@ public class Cliente {
 
     public int getContadorMidiasAssistidas() {
         return contadorMidiasAssistidas;
+    }
+
+		
+	public LocalDate getDataAssistida() {
+        return dataAssistida;
+    }
+
+    public void setDataAssistida(LocalDate dataAssistida) {
+        this.dataAssistida = dataAssistida;
     }
 }
 

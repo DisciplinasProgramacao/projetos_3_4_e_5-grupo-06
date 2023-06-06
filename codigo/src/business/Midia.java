@@ -106,4 +106,5 @@ public abstract class Midia {
     public void avaliar(int avaliacao) {
     	
     }
+
 }
