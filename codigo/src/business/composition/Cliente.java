@@ -1,117 +1,133 @@
 package business.composition;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import business.composition.enums.ClienteType;
+import business.exceptions.ClienteReviewExcessException;
+import business.exceptions.ClienteUnauthorizedPermission;
+import business.exceptions.MidiaAlreadyInListException;
+import business.exceptions.MidiaNotFoundException;
+import business.exceptions.ReviewScoreException;
+
 public class Cliente {
-	protected LocalDate dataAssistida;
-	private String nomeDeUsuario;
+	
+	private String nome;
 	private String senha;
-	private List<Serie> listaParaVer;
-	private List<Serie> listaJaVistas;
-	private int contadorMidiasAssistidas;
+	private List<Midia> listaParaAssistir;
+	private List<Midia> listaAssistidas;
+	private ClienteType tipoCliente;
 
-	/**
-	 * 
-	 * Construtor da classe Cliente.
-	 * 
-	 * @param nomeDeUsuario o nome de usuário do cliente.
-	 * @param senha         a senha do cliente.
-	 */
-	public Cliente(String nomeDeUsuario, String senha) {
-		this.nomeDeUsuario = nomeDeUsuario;
-		this.senha = senha;
-		this.listaParaVer = new ArrayList<>();
-		this.listaJaVistas = new ArrayList<>();
-		this.contadorMidiasAssistidas = 0;
+	public Cliente(String nome, String senha) {
+		this.setNome(nome);
+		this.setSenha(senha);
+		this.listaParaAssistir = new ArrayList<>();
+		this.listaAssistidas = new ArrayList<>();
+		
+		this.setTipoCliente(ClienteType.REGULAR);
 	}
-
+	
 	/**
+	 * Adiciona na lista de midias "para assistir" uma midia informada por parametro
 	 * 
-	 * Método que adiciona uma série na lista "para ver".
-	 * 
-	 * @param serie a série a ser adicionada.
+	 * @param midia
+	 * @throws MidiaAlreadyInListException caso a midia ja tenha sido informada anteriormente
 	 */
-	public void adicionarNaLista(Serie serie) {
-		listaParaVer.add(serie);
+	public void addListaParaAssistir(Midia midia) throws MidiaAlreadyInListException {
+		if (listaParaAssistir.contains(midia)) {
+			throw new MidiaAlreadyInListException(this, midia);
+		}
+		
+		listaParaAssistir.add(midia);
 	}
-
+	
 	/**
+	 * Executa metodos para assistir uma midia, sendo eles, verificar se o cliente tem
+	 * permissão para assistir aquela midia caso seja um lançamento e ele não seja profissional,
+	 * verifica o tamanho da lista de assistidas e torna-o um especialista caso a lista seja maior que 4
+	 * em tamanho e se a lista não conter a midia a ser assistida, adiciona e chama o
+	 * metodo de registrar a audiencia. 
 	 * 
-	 * Método que retira uma série da lista "para ver".
 	 * 
-	 * @param nomeSerie o nome da série a ser retirada.
+	 * @param midia
+	 * @throws MidiaNotFoundException
+	 * @throws ClienteUnauthorizedPermission
 	 */
-	public void retirarDaLista(String nomeSerie) {
-		for (Serie serie : listaParaVer) {
-			if (serie.getNome().equals(nomeSerie)) {
-				listaParaVer.remove(serie);
-				break;
-			}
+	public void assistirMidia(Midia midia) throws MidiaNotFoundException, ClienteUnauthorizedPermission {
+		if (midia == null) {
+			throw new MidiaNotFoundException();
+		}
+		
+		if (midia.isLancamento() && this.tipoCliente == ClienteType.REGULAR || this.tipoCliente == ClienteType.ESPECIALISTA) {
+			throw new ClienteUnauthorizedPermission(this);
+		}
+		
+		if (listaAssistidas.size() > 4) {
+			this.tipoCliente = ClienteType.ESPECIALISTA;
+		}
+		
+		if (!listaAssistidas.contains(midia)) {
+			listaAssistidas.add(midia);
+		}
+		
+		midia.aumentaAudiencia();
+	}
+	
+	/**
+	 * Executa funções para avaliar uma midia e faz verificações de para guarda. 
+	 * 
+	 * @param midia que será avaliada
+	 * @param nota da avaliação
+	 * @param comentario da avaliação
+	 * @throws ClienteUnauthorizedPermission caso o cliente tente avaliar com comentario sendo do tipo "REGULAR"
+	 * @throws ClienteReviewExcessException caso o cliente ja tenho avaliado esse midia anteriormente
+	 * @throws ReviewScoreException caso a nota seja ou menor que 1 ou maior que 5
+	 */
+	public void avaliar(Midia midia, int nota, String comentario) throws ClienteUnauthorizedPermission, ClienteReviewExcessException, ReviewScoreException {
+		
+		if (comentario != null && getTipoCliente() == ClienteType.REGULAR) {
+			throw new ClienteUnauthorizedPermission(this);
+		}
+		
+		if (midia.getAvaliacoes().containsKey(this)) {
+			throw new ClienteReviewExcessException(this);
+		}
+		
+		if (nota < 1 || nota > 5) {
+			throw new ReviewScoreException();
+		}
+		
+		try {
+			midia.addAvaliacao(this, nota, comentario);
+		} catch (ClienteReviewExcessException | ReviewScoreException e) {
+			System.out.println(e.getMessage());
 		}
 	}
 
 	/**
+	 * Adiciona uma midia a lista "midias assistidas"
 	 * 
-	 * Método que filtra séries por gênero.
-	 * 
-	 * @param genero o gênero a ser filtrado.
-	 * @return a lista de séries que correspondem ao gênero filtrado.
+	 * @param m
+	 * @throws MidiaAlreadyInListException caso a midia ja tenha sido adicionada anteriormente
 	 */
-	public List<Serie> filtrarporGenero(String genero) {
-		List<Serie> resultado = new ArrayList<>();
-		for (Serie serie : listaJaVistas) {
-			if (serie.getGenero().equals(genero)) {
-				resultado.add(serie);
-			}
+	public void addListaAssistida(Midia m) throws MidiaAlreadyInListException {
+		if (this.listaAssistidas.contains(m)) {
+			throw new MidiaAlreadyInListException(this, m);
 		}
-		return resultado;
+		
+		listaAssistidas.add(m);
+	}
+	
+	public int getListaAssistidasSize() {
+		return listaAssistidas.size();
+	}
+	
+	public String getNome() {
+		return this.nome;
 	}
 
-	/**
-	 * 
-	 * Método que filtra séries por idioma.
-	 * 
-	 * @param idioma o idioma a ser filtrado.
-	 * @return a lista de séries que correspondem ao idioma filtrado.
-	 */
-	public List<Serie> filtrarPorIdioma(String idioma) {
-		List<Serie> resultado = new ArrayList<>();
-		for (Serie serie : listaJaVistas) {
-			if (serie.getIdioma().equals(idioma)) {
-				resultado.add(serie);
-			}
-		}
-		return resultado;
-	}
-
-	/**
-	 * 
-	 * Método que filtra séries por quantidade de episódios.
-	 * 
-	 * @param quantEpisodios a quantidade de episódios a ser filtrada.
-	 * @return a lista de séries que correspondem à quantidade de episódios
-	 *         filtrada.
-	 */
-	public List<Serie> filtrarPorQtdEpisodios(int quantEpisodios) {
-		List<Serie> resultado = new ArrayList<>();
-		for (Serie serie : listaJaVistas) {
-			if (serie.getQuantidadeEpisodios() == quantEpisodios) {
-				resultado.add(serie);
-			}
-		}
-		return resultado;
-	}
-
-	// get / set
-
-	public String getNomeDeUsuario() {
-		return nomeDeUsuario;
-	}
-
-	public void setNomeDeUsuario(String nomeDeUsuario) {
-		this.nomeDeUsuario = nomeDeUsuario;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public String getSenha() {
@@ -122,76 +138,21 @@ public class Cliente {
 		this.senha = senha;
 	}
 
-	public List<Serie> getListaParaVer() {
-		return listaParaVer;
+	public List<Midia> getListaParaAssistir() {
+		return listaParaAssistir;
 	}
 
-	public void setListaParaVer(List<Serie> listaParaVer) {
-		this.listaParaVer = listaParaVer;
+	public List<Midia> getListaAssistidas() {
+		return listaAssistidas;
 	}
 
-	public List<Serie> getListaJaVistas() {
-		return listaJaVistas;
+	public ClienteType getTipoCliente() {
+		return tipoCliente;
 	}
 
-	public void setListaJaVistas(List<Serie> listaJaVistas) {
-		this.listaJaVistas = listaJaVistas;
+	public void setTipoCliente(ClienteType tipoCliente) {
+		this.tipoCliente = tipoCliente;
 	}
 
-	/**
-	 * 
-	 * Registra a audiência de uma série específica.
-	 * 
-	 * @param serie a série a ter sua audiência registrada
-	 *              A função retira a série da lista de séries não vistas e adiciona
-	 *              na lista de séries já vistas.
-	 *              Em seguida, a função chama o método 'registrarAudiencia' da
-	 *              série, responsável por incrementar o número
-	 *              de visualizações dessa série.
-	 */
-	public void registrarAudiencia(Serie serie) {
-        retirarDaLista(serie.getNome());
-        getListaJaVistas().add(serie);
-        serie.registrarAudiencia();
 
-        // Adicionar a data atual à série assistida
-        LocalDate dataAtual = LocalDate.now();
-		setDataAssistida(dataAtual);
-    }
-
-	/**
-	 * 
-	 * Representa um objeto Usuário com nome de usuário e senha.
-	 * /
-	 * public class Usuario {
-	 * /*
-	 * Retorna uma representação em String do objeto Usuário.
-	 * 
-	 * @return uma String contendo o nome de usuário e a senha do usuário, no
-	 *         seguinte formato:
-	 *         "Nome de usuário='[nomeDeUsuario]'; Senha='[senha]'".
-	 */
-	public String toString() {
-		return " Nome de usuario='" + getNomeDeUsuario() + "'" +
-				"; Senha='" + getSenha() + "'";
-	
-	}
-	public void incrementarContadorMidiasAssistidas() {
-        contadorMidiasAssistidas++;
-    }
-
-    public int getContadorMidiasAssistidas() {
-        return contadorMidiasAssistidas;
-    }
-
-		
-	public LocalDate getDataAssistida() {
-        return dataAssistida;
-    }
-
-    public void setDataAssistida(LocalDate dataAssistida) {
-        this.dataAssistida = dataAssistida;
-    }
 }
-
-	
