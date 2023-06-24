@@ -21,9 +21,8 @@
 | Como um administrador, eu quero  | Definir mídias restritas marcadas como "Lançamento"  | Para facilitar a gestão de mídias   | Concluído  |   |
 | Como um cliente, eu quero  | Adicionar mídias em uma “lista de desejos”  | Para facilitar a organização de mídias do cliente  | concluído  |   |
 | Como um administrador, eu quero  | Administrar a audiência das mídias  | Para facilitar a gestão de mídias  | Concluído  |   |
-| Como um cliente, eu quero  | Ter acesso a média de nota das avaliações | Para facilitar a relevância de mídias  | Concluído  |                |
-| Como um administrador, eu quero  | Definir os gêneros das mídias a uma lista: “Ação, Anime, Aventura, Comédia, Documentário, Drama, 
-Policial, Romance e Suspense”  |  Para facilitar a gestão de mídias  | Concluído  |   |
+| Como um cliente, eu quero  | Ter acesso a média de nota das avaliações | Para facilitar a relevância de mídias  | Concluído  |   |
+| Como um administrador, eu quero  | Definir os gêneros das mídias a uma lista“Ação,Anime,Aventura,Comédia,Documentário,Drama,Policial,Romance e Suspense”  |  Para facilitar a gestão de mídias  | Concluído  |   |
 
 
 > Written with [StackEdit](https://stackedit.io/).
