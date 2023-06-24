@@ -1,76 +1,190 @@
 package test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import java.util.List;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import business.Cliente;
-import business.Serie;
+import business.composition.Cliente;
+import business.composition.Midia;
+import business.composition.enums.ClienteType;
+import business.exceptions.ClienteReviewExcessException;
+import business.exceptions.ClienteUnauthorizedPermission;
+import business.exceptions.MidiaAlreadyInListException;
+import business.exceptions.MidiaNotFoundException;
+import business.exceptions.ReviewScoreException;
+import business.subobjects.Serie;
 
-public class testCliente {
+public class ClienteTest {
 
-	private Cliente cliente;
-    	private Serie serie1;
-    	private Serie serie2;
-    	private Serie serie3;
+    Midia s, lan;
+    Cliente c;
     
-	//Adiciona três novas séries e um novo cliente
-	@Before
-	public void setup() {
-	cliente = new Cliente("cliente123", "senha123");
-	serie1 = new Serie("Game of Thrones", "Fantasia", "Inglês", 62, 0);
-	serie2 = new Serie("Breaking Bad", "Drama", "Inglês", 73, 0);
-	serie3 = new Serie("La Casa de Papel", "Ação", "Espanhol", 24, 0);
-	}
-	//Garantir que a remoção não possui inconsistência
-	@Test
-	public void retirarDaListaNaoRemoveSeNaoExistir() {
-	cliente.adicionarNaLista(serie1);
-	cliente.adicionarNaLista(serie2);
-	cliente.adicionarNaLista(serie3);
-
-	cliente.retirarDaLista("Friends");
-
-	Assertions.assertEquals(3, cliente.getListaParaVer().size());
-	}
-	//Garantir que as séries adicionadas estão presentes na lista do cliente
-	@Test
-	public void adicionarNaListaAdicionaSerieNaLista() {
-	cliente.adicionarNaLista(serie1);
-	cliente.adicionarNaLista(serie2);
-	cliente.adicionarNaLista(serie3);
-
-	Assertions.assertTrue(cliente.getListaParaVer().contains(serie1));
-	Assertions.assertTrue(cliente.getListaParaVer().contains(serie2));
-	Assertions.assertTrue(cliente.getListaParaVer().contains(serie3));
-	}
-	//Filtra os resultados por gênero corretamente
-	@Test
-	public void filtrarPorGenerotest(){
-	cliente.registrarAudiencia(serie2);
-	List<Serie> resultado = cliente.filtrarporGenero("Drama");
-	assertEquals(1, resultado.size());
-	assertTrue(resultado.contains(serie2));
-	}
-	//Filtra os resultados por idioma corretamente
-	@Test
-	public void fitrarPorIdioma(){
-	cliente.registrarAudiencia(serie1);
-	List<Serie> resultado = cliente.filtrarPorIdioma("Inglês");
-	assertEquals(1, resultado.size());
-	assertTrue(resultado.contains(serie1));
-	}
-	//Filtra os resultados por quantidade de episódios corretamente
-	@Test
-	public void testFiltrarPorQtdEpisodios() {
-	cliente.registrarAudiencia(serie1);
-	List<Serie> resultado = cliente.filtrarPorQtdEpisodios(62);
-	assertEquals(1, resultado.size());
-	assertTrue(resultado.contains(serie1));
-	}
+    @BeforeEach
+    public void setUp() {
+        c = new Cliente("Tester", "123");
+        try {
+        	lan = new Serie("SerieDahora", "Inglês", "Português", new SimpleDateFormat("dd/MM/yyyy").parse("10/10/2021"), true, 5);
+			s = new Serie("SerieDahora", "Inglês", "Português", new SimpleDateFormat("dd/MM/yyyy").parse("10/10/2021"), false, 5);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+    }
+    
+    @Test
+    public void adicionarNaListaDeAssistidasTest() {
+    	try {
+			c.addListaAssistida(s);
+		} catch (MidiaAlreadyInListException e) {
+			e.printStackTrace();
+		}
+    	
+    	assertEquals(1, c.getListaAssistidasSize());
+    }
+    
+    @Test
+    public void tentaAdicionarNaListaDeAssistidasJaAdicionadaAntesTest() {
+    	try {
+			c.addListaAssistida(s);
+		} catch (MidiaAlreadyInListException e) {
+			e.printStackTrace();
+		}
+    	
+		assertThrows(MidiaAlreadyInListException.class,
+				() -> { c.addListaAssistida(s); });
+    }
+    
+    @Test
+    public void adicionaNaListaParaAssistirTest() {
+    	try {
+			c.addListaParaAssistir(s);
+		} catch (MidiaAlreadyInListException e) {
+			e.printStackTrace();
+		}
+    	
+    	assertEquals(1, c.getListaParaAssistir().size());
+    }
+    
+    @Test
+    public void tentaAdicionarNaListaParaAssistirJaAdicionadaAntesTest() {
+    	try {
+			c.addListaParaAssistir(s);
+		} catch (MidiaAlreadyInListException e) {
+			e.printStackTrace();
+		}
+    	
+		assertThrows(MidiaAlreadyInListException.class,
+				() -> { c.addListaParaAssistir(s); });
+    }
+    
+    @Test
+    public void assistirMidiaTest() {
+    	try {
+			c.assistirMidia(s);
+		} catch (MidiaNotFoundException | ClienteUnauthorizedPermission e) {
+			e.printStackTrace();
+		}
+    	
+    	assertEquals(1, c.getListaAssistidasSize());
+    }
+    
+    @Test
+    public void assistirMidiaLancamentoSemPermissaoTest() {
+		assertThrows(ClienteUnauthorizedPermission.class, () -> { c.assistirMidia(lan); });
+    }
+    
+    @Test
+    public void assistirMidiaLancamentoComPermissaoTest() {
+    	c.setTipoCliente(ClienteType.PROFISSIONAL);
+    	
+    	try {
+			c.assistirMidia(lan);
+		} catch (MidiaNotFoundException | ClienteUnauthorizedPermission e) {
+			e.printStackTrace();
+		}
+    	
+		assertEquals(1, lan.getAudiencia());
+    }
+      
+    @Test
+    public void tentaAssistirMidiaJaAssistidaTest() {
+    	try {
+			c.assistirMidia(s);
+			c.assistirMidia(s);
+		} catch (MidiaNotFoundException | ClienteUnauthorizedPermission e) {
+			e.printStackTrace();
+		}
+    	
+    	assertEquals(1, c.getListaAssistidasSize());
+    }
+    
+    @Test
+    public void avaliarSerieTest() {
+    	try {
+			c.avaliar(s, 5, null);
+		} catch (ClienteUnauthorizedPermission | ClienteReviewExcessException | ReviewScoreException e) {
+			e.printStackTrace();
+		}
+    	
+    	assertEquals(1, s.getAvaliacoes().size());
+    }
+    
+    // avaliar com nota maior q 5 ou menor q 1
+    
+    @Test
+    public void avaliarSerieDuasVezesTest() {
+    	try {
+			c.avaliar(s, 5, null);
+		} catch (ClienteUnauthorizedPermission | ClienteReviewExcessException | ReviewScoreException e) {
+			e.printStackTrace();
+		}
+    	
+		assertThrows(ClienteReviewExcessException.class,
+				() -> { c.avaliar(s, 5, null); });
+    }
+    
+    @Test
+    public void avaliarSerieComComentarioSemPermissaoTest() {
+		assertThrows(ClienteUnauthorizedPermission.class,
+				() -> { c.avaliar(s, 5, "Teste"); });
+    }
+    
+    @Test
+    public void avaliarSerieComComentarioComPermissaoTest() {
+    	Midia s1 = null, s2 = null, s3 = null, s4 = null, s5 = null, s6 = null;
+    	
+		try {
+			s1 = new Serie("SerieDahora", "Inglês", "Português", new SimpleDateFormat("dd/MM/yyyy").parse("10/10/2021"), false, 5);
+			s2 = new Serie("SerieDahora", "Inglês", "Português", new SimpleDateFormat("dd/MM/yyyy").parse("10/10/2021"), false, 5);
+	    	s3 = new Serie("SerieDahora", "Inglês", "Português", new SimpleDateFormat("dd/MM/yyyy").parse("10/10/2021"), false, 5);
+	    	s4 = new Serie("SerieDahora", "Inglês", "Português", new SimpleDateFormat("dd/MM/yyyy").parse("10/10/2021"), false, 5);
+	    	s5 = new Serie("SerieDahora", "Inglês", "Português", new SimpleDateFormat("dd/MM/yyyy").parse("10/10/2021"), false, 5);
+	    	s6 = new Serie("SerieDahora", "Inglês", "Português", new SimpleDateFormat("dd/MM/yyyy").parse("10/10/2021"), false, 5);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+    	
+    	try {
+			c.assistirMidia(s1);
+			c.assistirMidia(s2);
+			c.assistirMidia(s3);
+			c.assistirMidia(s4);
+			c.assistirMidia(s5);
+			c.assistirMidia(s6);
+		} catch (MidiaNotFoundException | ClienteUnauthorizedPermission e) {
+			e.printStackTrace();
+		}
+    	
+    	try {
+			c.avaliar(s1, 5, "Teste");
+		} catch (ClienteUnauthorizedPermission | ClienteReviewExcessException | ReviewScoreException e) {
+			e.printStackTrace();
+		}
+    	
+    	assertEquals(1, s1.getAvaliacoes().size());
+    }
 }
