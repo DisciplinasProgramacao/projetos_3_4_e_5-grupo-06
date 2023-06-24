@@ -18,9 +18,9 @@
 | Como um administrador, eu quero     | Receber um relatório com qual cliente assistiu mais mídias, e quantas mídias | Para facilitar a gestão de clientes  | concluído  |
 | Como um administrador, eu quero     | Diferenciar os tipos de cliente entre: Regular, especialista e profissional | Para facilitar a gestão de clientes  | concluído  | Luana  |
 |  Como um cliente, eu quero  | Dar nota e comentar as mídias (de acordo com as regras de negócio: cliente regular, profissional e especialista) | Para facilitar a relevância de mídias  | Concluído  | Luana  |
-| Como um administrador, eu quero  | Definir mídias restritas marcadas como "Lançamento"  | Para facilitar a gestão de mídias   | Concluído  |   |
-| Como um cliente, eu quero  | Adicionar mídias em uma “lista de desejos”  | Para facilitar a organização de mídias do cliente  | concluído  |   |
-| Como um administrador, eu quero  | Administrar a audiência das mídias  | Para facilitar a gestão de mídias  | Concluído  |   |
+| Como um administrador, eu quero  | Definir mídias restritas marcadas como "Lançamento"  | Para facilitar a gestão de mídias   | Concluído  | Guilherme |
+| Como um cliente, eu quero  | Adicionar mídias em uma “lista de desejos”  | Para facilitar a organização de mídias do cliente  | concluído  | Guilherme |
+| Como um administrador, eu quero  | Administrar a audiência das mídias  | Para facilitar a gestão de mídias  | Concluído  | Guilherme |
 | Como um cliente, eu quero  | Ter acesso a média de nota das avaliações | Para facilitar a relevância de mídias  | Concluído  |   |
 | Como um administrador, eu quero  | Definir os gêneros das mídias a uma lista“Ação,Anime,Aventura,Comédia,Documentário,Drama,Policial,Romance e Suspense”  |  Para facilitar a gestão de mídias  | Concluído  |   |
 | Como um administrador, eu quero  |  Manter um catálogo de séries, filmes, trailers e clientes  | Para auxiliar na gestão da plataforma  |  Concluído  |   |
