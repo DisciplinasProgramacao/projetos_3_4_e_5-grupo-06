@@ -3,8 +3,6 @@
 Como discutido em sala com o professor Cleiton, o projeto foi refeito totalmente do zero para obter um melhor resultado final. O código foi desenvolvido em conjunto e cada integrante commitou uma parte do código. 
 O backlog está atualizado de acordo com o projeto atual. 
 
- 
-ATENÇÃO: Pode ser que, ao carregar o arquivo, dependendo de qual IDE você esteja utilizando, o caminho do arquivo não será lido corretamente. O programa foi desenvolvido no Eclipse, no entanto, ao tentar rodar no Visual Studio Code, foi necessário adicionar contrabarras nas strings de caminho de arquivo ao invés de barras comuns.
 	 
 
   
