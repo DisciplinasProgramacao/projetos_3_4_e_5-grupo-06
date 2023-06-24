@@ -1,167 +1,180 @@
 package test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import org.junit.jupiter.api.Assertions;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.List;
+
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import business.PlataformaStreaming;
-import business.Cliente;
-import business.Serie;
+import business.composition.Cliente;
+import business.composition.Midia;
+import business.exceptions.ClienteAlreadyExistsException;
+import business.exceptions.MidiaAlreadyExistsException;
+import business.exceptions.MidiaAlreadyInListException;
+import business.subobjects.Filme;
+import business.subobjects.Serie;
 
-class testPlataformaStreaming {
-
-	private PlataformaStreaming plataforma;
-    //executado antes de cada teste criando um objeto da classe PlataformaStreaming
-    @BeforeEach
-    public void setUp() {
-        plataforma = new PlataformaStreaming("Netflix");
-    }
-
-	// teste login
-    @Test
-    public void Logintest() {
-        Cliente cliente = new Cliente("user123", "password");
-        plataforma.adicionarCliente(cliente);
-
-        Assertions.assertNull(plataforma.login("user123", "wrongpassword"));
-        Assertions.assertEquals(cliente, plataforma.login("user123", "password"));
-        Assertions.assertEquals(cliente, plataforma.getClienteAtual());
-    }
-
-    //teste do metodo FiltrarPorGenero
-    @Test
-    public void FiltrarPorGenerotest() {
-        Serie serie1 = new Serie("Breaking Bad", "Drama", "English", 62, 0);
-        Serie serie2 = new Serie("Friends", "Comedy", "English", 236, 0);
-        Serie serie3 = new Serie("La Casa de Papel", "Drama", "Spanish", 31, 0);
-        plataforma.adicionarSerie(serie1);
-        plataforma.adicionarSerie(serie2);
-        plataforma.adicionarSerie(serie3);
-
-        Assertions.assertEquals(2, plataforma.filtrarPorGenero("Drama").size());
-        Assertions.assertEquals(1, plataforma.filtrarPorGenero("Comedy").size());
-        Assertions.assertEquals(0, plataforma.filtrarPorGenero("Action").size());
-    }
-
-    //teste do metodo FiltrarPorIdioma
-    @Test
-    public void FiltrarPorIdiomatest() {
-        Serie serie1 = new Serie("Breaking Bad", "Drama", "English", 62, 0);
-        Serie serie2 = new Serie("Friends", "Comedy", "English", 236, 0);
-        Serie serie3 = new Serie("La Casa de Papel", "Drama", "Spanish", 31, 0);
-        plataforma.adicionarSerie(serie1);
-        plataforma.adicionarSerie(serie2);
-        plataforma.adicionarSerie(serie3);
-
-        Assertions.assertEquals(2, plataforma.filtrarPorIdioma("English").size());
-        Assertions.assertEquals(1, plataforma.filtrarPorIdioma("Spanish").size());
-        Assertions.assertEquals(0, plataforma.filtrarPorIdioma("Portuguese").size());
-    }
-
-    //teste do metodo FiltrarPorQtdEpisodios
-    @Test
-    public void FiltrarPorQtdEpisodiostest() {
-        Serie serie1 = new Serie("Breaking Bad", "Drama", "English", 62, 0);
-        Serie serie2 = new Serie("Friends", "Comedy", "English", 236, 0);
-        Serie serie3 = new Serie("La Casa de Papel", "Drama", "Spanish", 31, 0);
-        plataforma.adicionarSerie(serie1);
-        plataforma.adicionarSerie(serie2);
-        plataforma.adicionarSerie(serie3);
-
-        Assertions.assertEquals(1, plataforma.filtrarPorQtdEpisodios(62).size());
-        Assertions.assertEquals(1, plataforma.filtrarPorQtdEpisodios(236).size());
-        Assertions.assertEquals(1, plataforma.filtrarPorQtdEpisodios(31).size());
-        Assertions.assertEquals(0, plataforma.filtrarPorQtdEpisodios(100).size());
-    }
-
-    //teste do metodo para registrar audiencia
-    @Test
-    public void RegistrarAudienciatest() {
-        Serie serie1 = new Serie("Série 1", "Drama", "Inglês", 10, 0);
-        Serie serie2 = new Serie("Série 2", "Comédia", "Português", 5, 0);
-        plataforma.registrarAudiencia(serie1);
-        plataforma.registrarAudiencia(serie2);
-        plataforma.registrarAudiencia(serie2);
-        assertEquals(1, serie1.getAudiencia());
-        assertEquals(2, serie2.getAudiencia());
-    }
-	//teste para salvar audiência em um arquivo csv
-    @Test
-	public void testSalvarEspectador() {
-	Cliente cliente = new Cliente("user123", "password");
-	Cliente c2 = new Cliente("user999", "senha");
-        plataforma.adicionarCliente(cliente);
-        plataforma.adicionarCliente(c2);
-        
-        plataforma.salvarEspectadores("espectadores salvos.csv", plataforma.getTodosClientes(), plataforma);
-        assertEquals(cliente, plataforma.login(cliente.getNomeDeUsuario(), cliente.getSenha()));
-        assertEquals(c2, plataforma.login(c2.getNomeDeUsuario(), c2.getSenha()));
-        
-        
-	}
-    //Teste de salvamento de séries em um arquivo csv
-    @Test
-   	public void testSalvarSeries() {
-    	Serie serie1 = new Serie("Serie 1", "Drama", "Ingles", 10, 0);
-    	Serie serie2 = new Serie("Serie 2", "Comedia", "Portugues", 10, 0);
-        serie1.setData("17/04/2023");
-        serie1.setId(1);
-        serie2.setData("17/04/2023");
-        serie2.setId(2);
-        plataforma.adicionarSerie(serie1);
-        plataforma.adicionarSerie(serie2);
-        plataforma.salvarSeries("series salvas.csv", plataforma.getTodasSeries());
-           
-        
-        assertEquals(1, serie1.getId());
-        assertEquals(2, serie2.getId());
-           
-           
-   	}
-    //Teste para salvar a audiência de série em um arquivo csv
-    @Test
-   	public void testSalvarAudiencia() {
-    	Cliente c = new Cliente("Victor", "123");
-    	Cliente c2 = new Cliente("Vitor", "1234");
-    	Serie serie1 = new Serie("Serie 1", "Drama", "Ingles", 10, 0);
-    	Serie serie2 = new Serie("Serie 2", "Comedia", "Portugues", 10, 0);
-        serie1.setData("17/04/2023");
-        serie1.setId(1);
-        serie2.setData("17/04/2023");
-        serie2.setId(2);
-        plataforma.adicionarSerie(serie1);
-        plataforma.adicionarSerie(serie2);
-        plataforma.adicionarCliente(c);
-        plataforma.adicionarCliente(c2);
-        
-        c.registrarAudiencia(serie1);
-        c2.registrarAudiencia(serie1);
-        plataforma.registrarAudiencia(serie1);
-        plataforma.registrarAudiencia(serie1);
-        plataforma.salvarAudiencia("audiencia salva.csv", plataforma, plataforma.getTodosClientes(), plataforma.getTodasSeries());
- 
-           
-           
-   	}
-    
-	//Sequência de testes de carregamento de arquivo
+class PlataformaStreamingTest {
 	
-    @Test
-    public void testCarregarEspectadores() {
-    	//Passar a URI do arquivo
-        plataforma.carregarEspectadores("espectadores.csv");
-        
-    }
-    
-    @Test
-   	public void testCarregarAudiencia() {
-    	//Passar a URI do arquivo
-    	plataforma.carregarAudiencia("audiencia.csv");
-    	
-    }
-    
-    
+	public static PlataformaStreaming ps = new PlataformaStreaming("PlatTest");
+	
+	Cliente c;
+
+	static Cliente c2;
+	Midia s, f, s2, f2, lan;
+	
+	@BeforeAll
+	public static void beforeAl() {
+		c2 = new Cliente("Logador", "Logador123");
+		
+		try {
+			ps.adicionarCliente("IDLogador", c2);
+		} catch (ClienteAlreadyExistsException e) {
+			e.printStackTrace();
+		}
+		
+		ps.login("IDLogador", "Logador123");
+	}
+	
+	@BeforeEach
+	public void setUp() {
+		c = new Cliente("Tester", "123");
+
+		try {
+			lan = new Serie("SerieDahora", "Inglês", "Português", new SimpleDateFormat("dd/MM/yyyy").parse("10/10/2021"), true, 5);
+			s = new Serie("SerieDahora", "Inglês", "Português", new SimpleDateFormat("dd/MM/yyyy").parse("10/10/2021"), false, 5);
+			s2 = new Serie("SerieDahora2", "Inglês", "Português", new SimpleDateFormat("dd/MM/yyyy").parse("10/10/2021"), false, 5);
+			f = new Filme("FilmeDahora", "Suspense", "Português", new SimpleDateFormat("dd/MM/yyyy").parse("10/10/2021"), false, 120);
+			f2 = new Filme("FilmeDahora2", "Suspense", "Português", new SimpleDateFormat("dd/MM/yyyy").parse("10/10/2021"), false, 120);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void adicionarFilmeTest() {
+		try {
+			ps.adicionarMidia(128738723, f);
+		} catch (MidiaAlreadyExistsException e) {
+			e.printStackTrace();
+		}
+		
+		assertEquals(128738723, ps.getMidiaIdByName(f.getNome()));
+	}
+	
+	@Test
+	public void adicionarFilmeJaExistenteTest() {
+		try {
+			ps.adicionarMidia(4894737, f2);
+		} catch (MidiaAlreadyExistsException e) {
+			e.printStackTrace();
+		}
+		
+		assertThrows(MidiaAlreadyExistsException.class, () -> { ps.adicionarMidia(4894737, f2); });
+	}
+	
+	@Test
+	public void adicionarSerieTest() {
+		try {
+			ps.adicionarMidia(456546, s);
+		} catch (MidiaAlreadyExistsException e) {
+			e.printStackTrace();
+		}
+		
+		assertEquals(456546, ps.getMidiaIdByName(s.getNome()));
+	}
+	
+	@Test
+	public void adicionarSerieJaExistenteTest() {
+		try {
+			ps.adicionarMidia(234234324, s2);
+		} catch (MidiaAlreadyExistsException e) {
+			e.printStackTrace();
+		}
+	
+		assertThrows(MidiaAlreadyExistsException.class, () -> { ps.adicionarMidia(234234324, s2); });
+	}
+	
+	@Test
+	public void adicionarCliente() {
+		try {
+			ps.adicionarCliente("A2348923", c);
+		} catch (ClienteAlreadyExistsException e) {
+			e.printStackTrace();
+		}
+		
+		assertEquals("A2348923", ps.getClienteIdByName(c.getNome()));
+	}
+	
+	@Test
+	public void adicionarClienteJaExistente() {
+		try {
+			ps.adicionarCliente("A83874783", c);
+		} catch (ClienteAlreadyExistsException e) {
+			e.printStackTrace();
+		}
+		
+		assertThrows(ClienteAlreadyExistsException.class, () -> { ps.adicionarCliente("A83874783", c); });
+	}
+	
+	@Test
+	public void loginCorretoTest() {
+		ps.login("IDLogador", "Logador123");
+		
+		assertEquals(ps.getClienteLogado(), c2);
+	}
+	
+	@Test
+	public void loginIncorretoTest() {
+		ps.login("IDLogador", "LogadorAAA");
+		
+		assertEquals(c2, ps.getClienteLogado());
+	}
+	
+	@Test
+	public void filtragemGeneroTest() {
+		try {
+			ps.getClienteLogado().addListaParaAssistir(new Serie("Teeste", "Suspense", "Ingles", new SimpleDateFormat("dd/MM/yyyy").parse("10/20/2020"), false, 10));
+		} catch (MidiaAlreadyInListException | ParseException e) {
+			e.printStackTrace();
+		}
+		
+		List<Midia> filtrada = ps.filtrarPorGenero("Suspense");
+		
+		assertEquals(1, filtrada.size());
+	}
+	
+	@Test
+	public void filtragemIdiomaTest() {
+		try {
+			ps.getClienteLogado().addListaParaAssistir(new Serie("Teeste", "Acao", "Espanhol", new SimpleDateFormat("dd/MM/yyyy").parse("10/20/2020"), false, 30));
+		} catch (MidiaAlreadyInListException | ParseException e) {
+			e.printStackTrace();
+		}
+		
+		List<Midia> filtrada = ps.filtrarPorIdioma("Espanhol");
+		
+		assertEquals(1, filtrada.size());
+	}
+	
+	@Test
+	public void filtragemEpisodiosTest() {
+		try {
+			ps.getClienteLogado().addListaParaAssistir(new Serie("Teeste", "Terror", "Frances", new SimpleDateFormat("dd/MM/yyyy").parse("10/20/2020"), false, 20));
+		} catch (MidiaAlreadyInListException | ParseException e) {
+			e.printStackTrace();
+		}
+		
+		List<Serie> filtrada = ps.filtrarPorQuantidadeDeEpisodios(20);
+		
+		assertEquals(1, filtrada.size());
+	}
 
 }
 
