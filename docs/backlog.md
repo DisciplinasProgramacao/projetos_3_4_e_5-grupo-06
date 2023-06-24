@@ -29,6 +29,6 @@
 | ------  | Realização de testes  |  -------  | Concluído  | Vitor  |
 | -----  | Vídeo de apresentação de projeto  | -------  | Concluído  | Victor  |
 | ------  | Formulação do backlog  | Atualizado para a última versão do projeto  | Concluído  | Luana  |
-
+| ------  | Diagrama UML atualizado  | Atualizado para a última versão do projeto  | Concluído  | Victor Friche e Vitor de Figueiredo  |
 
 > Written with [StackEdit](https://stackedit.io/).
