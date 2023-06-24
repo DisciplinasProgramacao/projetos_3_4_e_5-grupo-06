@@ -1,0 +1,112 @@
+3586;A Tree Game;30/12/2011;73;true
+3590;A Cat Game;10/12/2014;89;true
+3592;A Robot Game;24/12/2015;14;true
+3598;A Bubble Game;06/12/2017;90;true
+3604;The Call of the Trees;15/12/2018;92;false
+3605;The Call of the Flumes;01/12/2019;76;true
+3616;The Call of the Goodies;14/12/2018;13;true
+3617;The Call of the Sinks;15/12/2019;9;false
+3624;The Call of the Cats;05/12/2020;89;false
+3632;The Call of the Robots;14/12/2015;40;true
+3637;The Call of the Pretender;25/12/2016;18;true
+3640;The Call of the Minds;26/12/2017;51;true
+3642;The Call of the Bubbles;14/12/2018;47;true
+3646;Fixing Trees;25/12/2019;18;false
+3647;Fixing Flumes;07/01/2021;55;false
+3650;Fixing Cats;27/02/2018;62;true
+3657;Fixing Robots;01/03/2019;39;true
+3661;Fixing Pretenders;13/03/2020;59;true
+3670;Fixing Bubbles;14/08/2017;38;true
+3674;Nihon Trees;21/08/2018;81;false
+3675;Nihon Flumes;16/08/2019;95;false
+3680;Nihon Goodies;25/08/2020;43;true
+3682;Nihon Sinks;14/03/2020;13;true
+3695;Nihon Cats;14/06/2018;41;false
+3698;Nihon Robots;22/06/2019;10;true
+3705;Nihon Pretender;05/07/2020;46;false
+3714;Nihon Peaks;14/02/2020;81;false
+3721;Nihon Minds;14/02/2019;8;false
+3725;Nihon Bubbles;14/02/2020;90;false
+3734;East Trees;14/03/2016;10;true
+3736;East Flumes;28/02/2017;89;true
+3738;East Goodies;18/02/2018;58;true
+3743;East Sinks;01/03/2019;68;false
+3749;East Cats;28/02/2020;80;false
+3754;East Robots;14/04/2018;40;true
+3761;East Pretender;16/04/2019;93;true
+3764;East Peaks;12/04/2020;20;false
+3773;East Minds;14/11/2012;88;false
+3775;Fear of Trees;10/11/2014;7;false
+3778;Fear of Flumes;12/11/2015;12;true
+3783;Fear of Goodies;23/11/2016;56;false
+3785;Fear of Sinks;28/11/2017;90;true
+3791;Fear of Cats;12/12/2018;48;true
+3793;Fear of Peaks;10/12/2020;94;false
+3801;Fear of Bubbles;14/09/2012;45;false
+3803;Those are Trees;09/09/2013;14;true
+3804;Those are Flumes;13/09/2014;16;true
+3811;Those are Goodies;17/09/2015;2;true
+3815;Those are Sinks;27/09/2016;30;false
+3816;Those are Cats;22/09/2017;14;false
+3823;Those are Robots;17/09/2018;25;false
+3824;Those are Bubbles;21/09/2019;26;true
+3830;Los Angeles Trees;11/09/2020;81;true
+3840;Los Angeles Flumes;14/05/2019;55;false
+3845;Los Angeles Goodies;11/05/2020;52;false
+3851;Los Angeles Sinks;14/05/2020;17;true
+3857;Los Angeles Cats;14/04/2019;91;true
+3863;Los Angeles Robots;19/04/2020;18;true
+3873;Los Angeles Pretender;14/06/2014;47;true
+3877;Los Angeles Peaks;24/06/2015;64;false
+3884;Los Angeles Minds;21/06/2016;96;false
+3887;Master Trees;16/06/2018;65;true
+3890;Master Flumes;22/06/2019;24;true
+3894;Master Goodies;12/06/2020;18;true
+3906;Master Cats;14/03/2019;51;false
+3910;Master Robots;18/03/2020;25;true
+3917;Master Pretenders;14/04/2014;60;true
+3920;Master Bubbles;17/04/2017;31;true
+3926;The Last of Trees;02/04/2018;2;true
+3930;The Last of Flumes;25/03/2019;73;false
+3932;The Last of Goodies;03/04/2020;29;true
+3936;The Last of Cats;14/07/2015;61;false
+3941;The Last of Robots;18/07/2016;97;false
+3948;The Last of Pretenders;26/07/2017;54;false
+3954;The Last of Peaks;07/08/2018;67;true
+3961;The Last of Bubbles;10/08/2020;3;false
+3459;Light;14/09/2016;75;true
+3460;Clear;14/09/2017;6;true
+3973;Shoreman;14/10/2012;16;true
+3462;Pink is the new White;20/09/2018;46;true
+3465;Pink is the new Green;27/09/2020;91;true
+3979;Treeman;04/10/2013;24;true
+3982;Catman;17/10/2014;69;false
+3983;Robotman;26/10/2015;36;true
+3474;Pink is the new Yellow;03/10/2019;69;true
+3989;Mindman;07/11/2016;81;true
+3481;Pink is the new Red;12/10/2020;84;false
+3993;Bubbleman;31/10/2017;83;false
+4000;Lost and Found;26/10/2018;58;false
+3489;Yellow County;14/09/2016;84;true
+3493;Red County;31/08/2017;88;true
+4006;The Romanos;07/11/20192;27;true
+3496;Green County;07/09/2020;9;true
+3502;Red Lotus;18/03/2020;94;true
+3509;Blue Lotus;14/06/2015;88;true
+3514;Green Lotus;29/05/2017;70;false
+3518;Enemies;16/05/2018;81;false
+3524;The Walking Dread;23/05/2020;81;false
+3527;The Walking Flumes;14/08/2016;65;false
+3531;The Walking Goodies;26/08/2017;1;false
+3533;The Walking Cats;22/08/2018;17;false
+3536;The Walking Robots;08/08/2019;77;false
+3540;The Walking Pretenders;28/07/2020;55;true
+3547;The Walking Peaks;14/05/2016;32;false
+3554;The Walking Minds;16/05/2017;20;true
+3556;The Walking Bubbles;01/05/2018;62;false
+3557;Game of Trees;14/05/2019;13;false
+3560;Game of Flumes;20/05/2020;75;false
+3570;Game of Goodies;14/04/2017;98;false
+3576;Game of Cats;03/04/2018;49;false
+3578;Game of Robots;03/04/2019;82;false
+3583;Game of Minds;08/04/2020;50;false
