@@ -10,7 +10,7 @@
 | Como um administrador, eu quero     | Registrar audiência de uma série quando ela for vista por um cliente    | Para manter a relevência de cada título    | Concluído  | Victor  |
 | Como um cliente, eu quero     | Que uma série saia da minha lista de Para Ver e entre na Já Vistos quando eu a assistir   | Para manter os registros atualizados    | concluído   | Juliana  |
 | Como um cliente, eu quero     | Que um filme saia da minha lista de Para Ver e entre na Já Vistos   | Para manter os registros atualizados    | concluído   | Luana  |
-| Como um cliente, eu quero     | Poder filtrar as minhas buscas na platafroma de streaming por titulo, idioma e gênero  | Para facilitar a busca   | em revisão  | Luana  |
+| Como um cliente, eu quero     | Poder filtrar as minhas buscas na platafroma de streaming por titulo, idioma e gênero  | Para facilitar a busca   | Concluído  | Luana  |
 | Como um administrador, eu quero     | Receber um relatório com as 10 mídias com mais visualizações, em ordem decrescente  | Para facilitar a gestão de relevância de mídias  | concluído  | 
 | Como um administrador, eu quero     | Receber um relatório com as  10 mídias de melhor avaliação, com pelo menos 100 avaliações, em ordem decrescente | Para facilitar a gestão de relevância de mídias  | concluído  |
 | Como um administrador, eu quero     | Receber um relatório com a porcentagem dos clientes com pelo menos 15 avaliações | Para facilitar a gestão de clientes  | concluído  |
