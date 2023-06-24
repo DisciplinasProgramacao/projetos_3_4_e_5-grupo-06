@@ -12,6 +12,6 @@
 | Como um cliente, eu quero     | Que um filme saia da minha lista de Para Ver e entre na Já Vistos   | Para manter os registros atualizados    | concluído   | Luana  |
 | Como um cliente, eu quero     | Poder filtrar as minhas buscas na platafroma de streaming por titulo, idioma e gênero  | Para facilitar a busca   | em revisão  | Luana  |
 | Como um administrador, eu quero     | Receber um relatório com as 10 mídias com mais visualizações, em ordem decrescente  | Para facilitar a gestão de relevância de mídias  | concluído  | 
-
+| Como um administrador, eu quero     | Receber um relatório com as  10 mídias de melhor avaliação, com pelo menos 100 avaliações, em ordem decrescente | Para facilitar a gestão de relevância de mídias  | concluído  |
 
 > Written with [StackEdit](https://stackedit.io/).
