@@ -16,7 +16,7 @@
 | Como um administrador, eu quero     | Receber um relatório com a porcentagem dos clientes com pelo menos 15 avaliações | Para facilitar a gestão de clientes  | concluído  |
 | Como um administrador, eu quero     | Receber um relatório com as  10 mídias de melhor avaliação, com qual cliente tem mais avaliações, e quantas avaliações | Para facilitar a gestão de clientes  | concluído  |
 | Como um administrador, eu quero     | Receber um relatório com qual cliente assistiu mais mídias, e quantas mídias | Para facilitar a gestão de clientes  | concluído  |
-
+| Como um administrador, eu quero     | Diferenciar os tipos de cliente entre: Regular, especialista e profissional | Para facilitar a gestão de clientes  | concluído  | Luana  |
 
 
 > Written with [StackEdit](https://stackedit.io/).
