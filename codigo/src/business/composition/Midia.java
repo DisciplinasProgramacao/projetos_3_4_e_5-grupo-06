@@ -1,110 +1,98 @@
-package business;
+package business.composition;
 
-import java.util.List;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
+import business.exceptions.ClienteReviewExcessException;
+import business.exceptions.ReviewScoreException;
 
 public abstract class Midia {
-    
-	// Declaracao de variaveis
-	String nome, genero, idioma, data, dataLancamento;
-	private int quantidadeEpisodios, audiencia;
-	protected int id;
-	protected int duracao;
-	protected int avaliacao;
-	
-	
-	
-	//Getters e Setters
 
-		public String getDataLancamento() {
-			return dataLancamento;
+	String id, nome, genero, idioma;
+	Date dataLancamento;
+	int audiencia;
+	boolean lancamento;
+
+	Map<Cliente, Avaliacao> avaliacoes;
+
+	public Midia(String nome, String genero, String idioma, Date dataLancamento, boolean lancamento) {
+		this.nome = nome;
+		this.genero = genero;
+		this.idioma = idioma;
+		this.dataLancamento = dataLancamento;
+		this.lancamento = lancamento;
+		this.avaliacoes = new HashMap<>();
+
+		this.audiencia = 0;
+	}
+
+	public int getAudiencia() {
+		return this.audiencia;
+	}
+
+	public String getNome() {
+		return this.nome;
+	}
+
+	public String getGenero() {
+		return this.genero;
+	}
+
+	public String getIdioma() {
+		return this.idioma;
+	}
+
+	public Date getDataDeLancamento() {
+		return this.dataLancamento;
+	}
+
+	public void aumentaAudiencia() {
+		this.audiencia++;
+	}
+
+	public boolean isLancamento() {
+		return this.lancamento;
+	}
+
+	public Map<Cliente, Avaliacao> getAvaliacoes() {
+		return this.avaliacoes;
+	}
+
+	/**
+	 * Adiciona uma nova avaliação ao mapa de avaliações.
+	 *
+	 * @param c como chave do mapa para a avaliação
+	 * @param nota como parametro para criação da avaliação
+	 * @param comentario como parametro para criação da avaliação
+	 * @throws ClienteReviewExcessException caso o cliente ja tenha adicionado uma avaliação a midia anteriormente
+	 * @throws ReviewScoreException caso a nota seja inferior a 1 ou maior que 5
+	 */
+	public void addAvaliacao(Cliente c, int nota, String comentario) throws ClienteReviewExcessException, ReviewScoreException {
+		Avaliacao a = new Avaliacao(nota, comentario);
+
+		if (avaliacoes.containsKey(c)) {
+			throw new ClienteReviewExcessException(c);
 		}
 
-		public void setDataLancamento(String dataLancamento) {
-			this.dataLancamento = dataLancamento;
+		if (nota < 0 || nota > 5) {
+			throw new ReviewScoreException();
 		}
 
-		public int getId() {
-			return id;
-		}
-		public void setId(int id) {
-			this.id = id;
-		}
-		public String getData() {
-			return data;
-		}
-		public void setData(String data) {
-			this.data = data;
-		}
-		public String getNome() {
-			return nome;
-		}
-		public void setNome(String nome) {
-			this.nome = nome;
-		}
-		public String getGenero() {
-			return genero;
-		}
-		public void setGenero(String genero) {
-			this.genero = genero;
-		}
-		public int getQuantidadeEpisodios() {
-			return quantidadeEpisodios;
-		}
-		public void setQuantidadeEpisodios(int quantidadeEpisodios) {
-			this.quantidadeEpisodios = quantidadeEpisodios;
-		}
-		public int getAudiencia() {
-			return audiencia;
-		}
-		public void setAudiencia(int audiencia) {
-			this.audiencia = audiencia;
-		}
-		public void setIdioma(String idioma) {
-			this.idioma = idioma;
-		}
-		
-		public String getIdioma() {
-			return idioma;
-		}
-		
-		public int getDuracao() {
-	        return duracao;
-	    }
+		avaliacoes.put(c, a);
+	}
 
-	    public void setDuracao(int duracao) {
-	        this.duracao = duracao;
-	    }
-	    
-	  //Registro de audiência
-		public void registrarAudiencia() {
-			audiencia++;
-		}	
+	/**
+	 * Executa uma média aritmética simples para descobrir a média das avalições de uma midia utilizando
+	 * o valor atribuido as notas.
+	 *
+	 * @return a media de avaliações da midia
+	 */
+	public double getMediaAvaliacoes() {
+		return this.getAvaliacoes().size() > 0 ? this.getAvaliacoes().values().stream().mapToInt(Avaliacao::getNota).sum() / this.getAvaliacoes().values().size() : 0;
+	}
 
-    /**
-     * Verifica se um cliente é regular ou especialista com base no número de mídias assistidas.
-     * 
-     * @param cliente o cliente a ser verificado.
-     * @return true se o cliente é especialista, false se o cliente é regular.
-     */
-    public boolean isEspecialista(Cliente cliente) {
-        int quantidadeMinima = 5; //quantidade mínima de mídias para um cliente ser considerado especialista
-        
-        List<Serie> listaJaVistas = cliente.getListaJaVistas();
-        return listaJaVistas.size() >= quantidadeMinima;
-
-        //falta definir tempo minimo de um mes
-
-    }
-    
-    /**
-     * 
-     * Método que permite ao cliente avaliar a midia com uma nota entre 1 e 5.
-     * 
-     * @param avaliacao a nota atribuída pelo cliente (entre 1 e 5)
-     * @return 
-     */
-    public void avaliar(int avaliacao) {
-    	
-    }
+	public abstract void print();
 
 }
+

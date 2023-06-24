@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import business.*;
+import business.composition.Cliente;
 
 public class Aplicacao {
 

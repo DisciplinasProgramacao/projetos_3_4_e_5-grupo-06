@@ -1,5 +1,7 @@
 package business;
 
+import business.composition.Midia;
+
 public class Filme extends Midia{
 
  

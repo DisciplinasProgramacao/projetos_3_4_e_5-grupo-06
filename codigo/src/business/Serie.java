@@ -1,49 +1,100 @@
-package business;
+package business.composition;
 
-public class Serie extends Midia{
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
+import business.composition.Avaliacao;
+import business.composition.Cliente;
+import business.exceptions.ClienteReviewExcessException;
+import business.exceptions.ReviewScoreException;
+
+public abstract class Midia {
 	
-	//Construtor
+	String id, nome, genero, idioma;
+	Date dataLancamento;
+	int audiencia;
+	boolean lancamento;
 	
-	public Serie(String nome, String genero, String idioma, int quantidadeEpisodios, int audiencia){
-		setNome(nome);
-		setGenero(genero);
-		setIdioma(idioma);
-		setQuantidadeEpisodios(quantidadeEpisodios);
-		setAudiencia(audiencia);
+	Map<Cliente, Avaliacao> avaliacoes;
+	
+	public Midia(String nome, String genero, String idioma, Date dataLancamento, boolean lancamento) {
+		this.nome = nome;
+		this.genero = genero;
+		this.idioma = idioma;
+		this.dataLancamento = dataLancamento;
+		this.lancamento = lancamento;
+		this.avaliacoes = new HashMap<>();
+		
+		this.audiencia = 0;
+	}
+	
+	public int getAudiencia() {
+		return this.audiencia;
+	}
+	
+	public String getNome() {
+		return this.nome;
+	}
+	
+	public String getGenero() {
+		return this.genero;
+	}
+	
+	public String getIdioma() {
+		return this.idioma;
+	}
+	
+	public Date getDataDeLancamento() {
+		return this.dataLancamento;
+	}
+ 
+	public void aumentaAudiencia() {
+		this.audiencia++;
 	}
 
-	public Serie(int id, String nome, String dataLancamento){
-		setId(id);
-		setNome(nome);
-		setDataLancamento(dataLancamento);
+	public boolean isLancamento() {
+		return this.lancamento;
 	}
 	
+	public Map<Cliente, Avaliacao> getAvaliacoes() {
+		return this.avaliacoes;
+	}
+
+	/**
+	 * Adiciona uma nova avaliação ao mapa de avaliações.
+	 * 
+	 * @param c como chave do mapa para a avaliação
+	 * @param nota como parametro para criação da avaliação
+	 * @param comentario como parametro para criação da avaliação
+	 * @throws ClienteReviewExcessException caso o cliente ja tenha adicionado uma avaliação a midia anteriormente
+	 * @throws ReviewScoreException caso a nota seja inferior a 1 ou maior que 5
+	 */
+	public void addAvaliacao(Cliente c, int nota, String comentario) throws ClienteReviewExcessException, ReviewScoreException {
+		Avaliacao a = new Avaliacao(nota, comentario);
+
+		if (avaliacoes.containsKey(c)) {
+			throw new ClienteReviewExcessException(c);
+		}
+		
+		if (nota < 0 || nota > 5) {
+			throw new ReviewScoreException();
+		}
+		
+		avaliacoes.put(c, a);
+	}
 	
 	/**
-     * 
-     * Método que permite ao cliente avaliar a serie com uma nota entre 1 e 5.
-     * 
-     * @param avaliacao a nota atribuída pelo cliente (entre 1 e 5)
-     */
-	@Override
-    public void avaliar(int avaliacao) {
-        if (avaliacao >= 1 && avaliacao <= 5) {
-            this.avaliacao = avaliacao;
-            System.out.println("Serie avaliada com sucesso!");
-        }else {
-        	System.out.println("Avaliacao invalida. Tente avaliar com numeros de 1 a 5!");
-        }
-    }
+	 * Executa uma média aritmética simples para descobrir a média das avalições de uma midia utilizando
+	 * o valor atribuido as notas.
+	 * 
+	 * @return a media de avaliações da midia
+	 */
+	public double getMediaAvaliacoes() {
+		return this.getAvaliacoes().size() > 0 ? this.getAvaliacoes().values().stream().mapToInt(Avaliacao::getNota).sum() / this.getAvaliacoes().values().size() : 0;
+	}
+
+	public abstract void print();
 	
-	// Metodo que pega os dados de uma entidade e transforma para o formato String
-	 @Override
-	    public String toString() {
-	        return 
-	                " nome='" + getNome() + "'" +
-	                "; genero='" + getGenero() + "'" +
-	                "; idioma='" + getIdioma() + "'" +
-	                "; quantidade de episodios='" + getQuantidadeEpisodios() + "'" +
-	                "; audiencia='" + getAudiencia();
-	               
-	    }
 }
+    
