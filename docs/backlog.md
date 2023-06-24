@@ -17,6 +17,7 @@
 | Como um administrador, eu quero     | Receber um relatório com as  10 mídias de melhor avaliação, com qual cliente tem mais avaliações, e quantas avaliações | Para facilitar a gestão de clientes  | concluído  |
 | Como um administrador, eu quero     | Receber um relatório com qual cliente assistiu mais mídias, e quantas mídias | Para facilitar a gestão de clientes  | concluído  |
 | Como um administrador, eu quero     | Diferenciar os tipos de cliente entre: Regular, especialista e profissional | Para facilitar a gestão de clientes  | concluído  | Luana  |
+|  Como um cliente, eu quero  | Dar nota e comentar as mídias (de acordo com as regras de negócio: cliente regular, profissional e especialista) | Para facilitar a relevância de mídias  | Concluído  | Luana  |
 
 
 > Written with [StackEdit](https://stackedit.io/).
