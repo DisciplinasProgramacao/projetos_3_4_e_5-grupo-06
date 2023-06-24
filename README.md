@@ -4,6 +4,7 @@ Como discutido em sala com o professor Cleiton, o projeto foi refeito totalmente
 
 O backlog está atualizado de acordo com o projeto atual. 
 
+Link do vídeo do projeto: https://youtu.be/KM8RFtsFn3Y
 	 
 
   
